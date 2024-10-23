@@ -10,6 +10,8 @@ import { PotsComponent } from './pages/pots/pots.component';
 import { RecurringBillsComponent } from './pages/recurring-bills/recurring-bills.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { LayoutComponent } from './shared/layout/layout.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { LayoutComponent } from './shared/layout/layout.component';
     RecurringBillsComponent,
     SidebarComponent,
     LayoutComponent,
+    PageNotFoundComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
