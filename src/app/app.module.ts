@@ -3,16 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { OverviewComponent } from './pages/overview/overview.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { BudgetsComponent } from './pages/budgets/budgets.component';
+import { PotsComponent } from './pages/pots/pots.component';
+import { RecurringBillsComponent } from './pages/recurring-bills/recurring-bills.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { LayoutComponent } from './shared/layout/layout.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OverviewComponent,
+    TransactionsComponent,
+    BudgetsComponent,
+    PotsComponent,
+    RecurringBillsComponent,
+    SidebarComponent,
+    LayoutComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
