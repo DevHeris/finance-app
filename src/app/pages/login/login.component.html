@@ -1,3 +1,62 @@
-<div>
-  <img src="/assets/images/logo-large.svg" alt="finance app logo" />
-</div>
+<mat-grid-list cols="2" rowHeight="fit">
+  <mat-grid-tile>
+    <img src="/assets/images/logo-large.svg" alt="finance app logo" />
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-stepper #stepper>
+      <mat-step
+        [stepControl]="usernameFormGroup"
+        errorMessage="Username is required."
+        label="Fill out your username"
+      >
+        <form [formGroup]="usernameFormGroup">
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required />
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step
+        [stepControl]="passwordFormGroup"
+        errorMessage="Password is required."
+        label="Fill out your password"
+      >
+        <form [formGroup]="passwordFormGroup">
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              [type]="hide() ? 'password' : 'text'"
+              required
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()"
+            >
+              <mat-icon>{{
+                hide() ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Done">
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button (click)="onLogin()">Login</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -13,6 +13,8 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MaterialModule } from './material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     PageNotFoundComponent,
     LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,FormsModule,ReactiveFormsModule,MaterialModule],
   providers: [
     provideAnimationsAsync()
   ],

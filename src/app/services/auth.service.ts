@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
 export class AuthService {
   private isAuthenticated = false;
   private readonly TOKEN_KEY = 'auth-token';
-
-  constructor(private router: Router) {}
+  private router = inject(Router);
 
   login(username: string, password: string): boolean {
     if (username === 'admin' && password === 'password') {
       this.isAuthenticated = true;
       localStorage.setItem(this.TOKEN_KEY, 'dummy-token');
+      this.router.navigate(['/']);
       return true; // SUCCESSFUL
     }
     return false; // FAILED

@@ -1,3 +1,68 @@
-/* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+    /* Colors */
+    --beige-500: #98908B;
+    --beige-100: #F8F4F0;
+    --grey-900: #201F24;
+    --grey-500: #696868;
+    --grey-300: #B3B3B3;
+    --grey-100: #F2F2F2;
+    --green: #277C78;
+    --yellow: #F2CDAC;
+    --cyan: #82C9D7;
+    --navy: #626070;
+    --red: #C94736;
+    --purple: #826CB0;
+    --purple-alt: #AF81BA;
+    --turquoise: #597C7C;
+    --brown: #93674F;
+    --magenta: #934F6F;
+    --blue: #3F82B2;
+    --navy-grey: #97A0AC;
+    --army-green: #7F9161;
+    --gold: #CAB361;
+    --orange: #BE6C49;
+    --white: #FFFFFF;
+
+    /* Box Shadow */
+    --box-shadow-custom: 0px 0px 14px 1px rgba(0, 0, 0, 0.10);
+
+    /* Font Families */
+    --font-family-sans: 'Public Sans', sans-serif;
+
+    /* Font Sizes */
+    --font-size-preset-1: 2rem;
+    --font-size-preset-2: 1.25rem;
+    --font-size-preset-3: 1rem;
+    --font-size-preset-4: 0.875rem;
+    --font-size-preset-5: 0.75rem;
+
+    /* Line Heights and Letter Spacing */
+    --line-height-120: 120%;
+    --line-height-150: 150%;
+    --letter-spacing-0: 0px;
+
+    /* Font Weights */
+    --font-weight-bold: 700;
+    --font-weight-regular: 400;
+
+    /* Spacing */
+    --spacing-500: 40px;
+    --spacing-400: 32px;
+    --spacing-300: 24px;
+    --spacing-250: 20px;
+    --spacing-200: 16px;
+    --spacing-150: 12px;
+    --spacing-100: 8px;
+    --spacing-50: 4px;
+}
+
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family-sans) !important;
+}
