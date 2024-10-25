@@ -3,7 +3,7 @@
     <img src="/assets/images/logo-large.svg" alt="finance app logo" />
   </mat-grid-tile>
   <mat-grid-tile colspan="2">
-    <mat-stepper #stepper>
+    <mat-stepper #stepper class="stepper-container">
       <mat-step
         [stepControl]="usernameFormGroup"
         errorMessage="Username is required."
@@ -51,15 +51,15 @@
       </mat-step>
 
       <mat-step label="Done">
-        <p class="done-p">You are now done.</p>
-        <div style="display: flex; justify-content: center; align-items: center">
+        <br />
+        <div class="button-group">
           <button mat-button matStepperPrevious>Back</button>
-          @if (isLoggingIn) {
-            <button fab style="background: transparent; outline: none; border: none">
+          @if (!isLoggingIn) {
+            <button mat-flat-button (click)="onLogin()">Login</button>
+          } @else if (isLoggingIn) {
+            <button fab style="background: transparent; border: none">
               <mat-spinner diameter="30"></mat-spinner>
             </button>
-          } @else {
-            <button mat-flat-button (click)="onLogin()">Login</button>
           }
         </div>
       </mat-step>

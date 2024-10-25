@@ -1,6 +1,6 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { BehaviorSubject } from 'rxjs';
 import { MaterialService } from '../material/material.service';
 
 @Injectable({
@@ -12,27 +12,32 @@ export class AuthService {
   private router = inject(Router);
   private materialService = inject(MaterialService);
 
-  login(username: string, password: string): boolean {
-    if (username === 'admin' && password === 'password') {
-      this.isAuthenticated = true;
-      localStorage.setItem(this.TOKEN_KEY, 'dummy-token');
-      this.router.navigate(['/']);
-      this.materialService.openSnackBar("You're now logged in!!", 'Cancel', {
-        horizontalPosition: 'end',
-        verticalPosition: 'top',
-        duration: 10000,
-      });
-      // SUCCESSFUL
-      return true;
-    } else {
-      this.materialService.openSnackBar('Invalid login credentials! Please try again', 'Cancel', {
-        horizontalPosition: 'start',
-        verticalPosition: 'top',
-        duration: 5000,
-      });
-      // FAILED
-      return false;
-    }
+  // BehaviorSubject to track isLoggingIn state
+  private _isLoggingIn = new BehaviorSubject<boolean>(false);
+  isLoggingIn$ = this._isLoggingIn.asObservable(); // Expose as observable
+
+  login(username: string, password: string): void {
+    this._isLoggingIn.next(true);
+
+    setTimeout(() => {
+      if (username === 'admin' && password === 'password') {
+        this.isAuthenticated = true;
+        localStorage.setItem(this.TOKEN_KEY, 'dummy-token');
+        this.router.navigate(['/']);
+        this.materialService.openSnackBar("You're now logged in!", 'Cancel', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          duration: 10000,
+        });
+      } else {
+        this.materialService.openSnackBar('Invalid login credentials!', 'Cancel', {
+          horizontalPosition: 'start',
+          verticalPosition: 'top',
+          duration: 5000,
+        });
+      }
+      this._isLoggingIn.next(false);
+    }, 3000);
   }
 
   logout(): void {
@@ -42,7 +47,6 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    // (!!) DOUBLE NEGATION TO CONVERT A VALUE INTO A BOOLEAN
     return !!localStorage.getItem(this.TOKEN_KEY);
   }
 }

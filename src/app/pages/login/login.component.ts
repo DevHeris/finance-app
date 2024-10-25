@@ -1,12 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnChanges,
-  OnInit,
-  signal,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/auth/auth.service';
@@ -21,14 +13,19 @@ import { AuthService } from '../../shared/auth/auth.service';
       useValue: { showError: true },
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   private _formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
   isLoggingIn: boolean = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.isLoggingIn$.subscribe({
+      next: (loggingIn) => {
+        this.isLoggingIn = loggingIn;
+      },
+    });
+  }
 
   usernameFormGroup = this._formBuilder.group({
     username: ['', Validators.required],
@@ -39,16 +36,11 @@ export class LoginComponent {
   });
 
   onLogin(): void {
-    this.isLoggingIn = true;
-    setTimeout(() => {
-      if (this.usernameFormGroup.valid && this.passwordFormGroup.valid) {
-        this.authService.login(
-          String(this.usernameFormGroup.controls.username.value),
-          String(this.passwordFormGroup.controls.password.value),
-        );
-        this.isLoggingIn = false;
-      }
-    }, 3000);
+    if (this.usernameFormGroup.valid && this.passwordFormGroup.valid) {
+      const username = this.usernameFormGroup.controls.username.value!;
+      const password = this.passwordFormGroup.controls.password.value!;
+      this.authService.login(username, password);
+    }
   }
 
   hide = signal(true);
