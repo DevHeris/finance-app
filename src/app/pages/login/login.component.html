@@ -4,11 +4,8 @@
   </mat-grid-tile>
   <mat-grid-tile colspan="2">
     <mat-stepper #stepper class="stepper-container">
-      <mat-step
-        [stepControl]="usernameFormGroup"
-        errorMessage="Username is required."
-        label="Fill out your username"
-      >
+      <mat-step label="Username">
+        <p class="login-text">Welcome, login to Your Account...</p>
         <form [formGroup]="usernameFormGroup">
           <mat-form-field>
             <mat-label>Username</mat-label>
@@ -24,6 +21,7 @@
         errorMessage="Password is required."
         label="Fill out your password"
       >
+        <br />
         <form [formGroup]="passwordFormGroup">
           <mat-form-field>
             <mat-label>Password</mat-label>
@@ -51,7 +49,7 @@
       </mat-step>
 
       <mat-step label="Done">
-        <br />
+        <p class="login-text">Click the login button!</p>
         <div class="button-group">
           <button mat-button matStepperPrevious>Back</button>
           @if (!isLoggingIn) {

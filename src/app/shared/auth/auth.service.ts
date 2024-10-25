@@ -7,22 +7,42 @@ import { MaterialService } from '../material/material.service';
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticated = false;
-  private readonly TOKEN_KEY = 'auth-token';
   private router = inject(Router);
   private materialService = inject(MaterialService);
 
-  // BehaviorSubject to track isLoggingIn state
+  // BehaviorSubjects to manage state
   private _isLoggingIn = new BehaviorSubject<boolean>(false);
-  isLoggingIn$ = this._isLoggingIn.asObservable(); // Expose as observable
+  private _isSigningUp = new BehaviorSubject<boolean>(false);
+
+  // Expose observables for state management
+  isLoggingIn$ = this._isLoggingIn.asObservable();
+  isSigningUp$ = this._isSigningUp.asObservable();
+
+  signup(email: string, username: string, password: string): void {
+    this._isSigningUp.next(true);
+
+    setTimeout(() => {
+      const user = { email, username, password };
+      localStorage.setItem('user-data', JSON.stringify(user));
+
+      this.router.navigate(['/']);
+      this.materialService.openSnackBar('Signup successful! Welcome!', 'Cancel', {
+        horizontalPosition: 'end',
+        verticalPosition: 'top',
+        duration: 10000,
+      });
+
+      this._isSigningUp.next(false);
+    }, 3000);
+  }
 
   login(username: string, password: string): void {
     this._isLoggingIn.next(true);
 
     setTimeout(() => {
-      if (username === 'admin' && password === 'password') {
-        this.isAuthenticated = true;
-        localStorage.setItem(this.TOKEN_KEY, 'dummy-token');
+      const storedUser = JSON.parse(localStorage.getItem('user-data') || '{}');
+
+      if (storedUser.username === username && storedUser.password === password) {
         this.router.navigate(['/']);
         this.materialService.openSnackBar("You're now logged in!", 'Cancel', {
           horizontalPosition: 'end',
@@ -36,17 +56,17 @@ export class AuthService {
           duration: 5000,
         });
       }
+
       this._isLoggingIn.next(false);
     }, 3000);
   }
 
   logout(): void {
-    this.isAuthenticated = false;
-    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem('user-data');
     this.router.navigate(['/login']);
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem(this.TOKEN_KEY);
+    return !!localStorage.getItem('user-data');
   }
 }

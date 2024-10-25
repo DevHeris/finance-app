@@ -1,0 +1,93 @@
+<mat-grid-list cols="3" rowHeight="fit">
+  <mat-grid-tile colspan="1">
+    <img src="/assets/images/logo-large.svg" alt="app logo" />
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="2">
+    <mat-stepper #stepper class="stepper-container" orientation="horizontal">
+      <!-- Step 1: User Details -->
+      <mat-step [stepControl]="userDetailsFormGroup" label="User Details">
+        <p class="login-text">Signup for your finance account...</p>
+
+        <form [formGroup]="userDetailsFormGroup">
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" required />
+          </mat-form-field>
+          &nbsp;
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required />
+          </mat-form-field>
+
+          <div>
+            <button mat-flat-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="passwordFormGroup" label="Set Password">
+        <form [formGroup]="passwordFormGroup">
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="hide() ? 'password' : 'text'"
+              formControlName="password"
+              required
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()"
+            >
+              <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+          &nbsp;
+          <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              matInput
+              [type]="hide() ? 'password' : 'text'"
+              formControlName="confirmPassword"
+              required
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-pressed]="hide()"
+              [attr.aria-label]="'Toggle confirm password visibility'"
+            >
+              <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-flat-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- Step 3: Confirmation -->
+      <mat-step label="Confirmation">
+        <p class="login-text">Click the button to create your account!</p>
+        <div class="button-group">
+          <button mat-button matStepperPrevious>Back</button>
+
+          @if (!isSigningUp) {
+            <button mat-flat-button color="primary" (click)="onSignup()">Signup</button>
+          } @else {
+            <button fab style="background: transparent; border: none">
+              <mat-spinner diameter="30"></mat-spinner>
+            </button>
+          }
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-grid-tile>
+</mat-grid-list>

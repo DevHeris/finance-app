@@ -15,6 +15,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LayoutComponent,
     PageNotFoundComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
   providers: [provideAnimationsAsync()],

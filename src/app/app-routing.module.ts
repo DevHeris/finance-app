@@ -9,6 +9,7 @@ import { RecurringBillsComponent } from './pages/recurring-bills/recurring-bills
 import { PotsComponent } from './pages/pots/pots.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { authGuard } from './shared/auth/auth.guard';
+import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
