@@ -1,62 +1,3 @@
-:root {
-    /* Colors */
-    --beige-500: #98908B;
-    --beige-100: #F8F4F0;
-    --grey-900: #201F24;
-    --grey-500: #696868;
-    --grey-300: #B3B3B3;
-    --grey-100: #F2F2F2;
-    --green: #277C78;
-    --yellow: #F2CDAC;
-    --cyan: #82C9D7;
-    --navy: #626070;
-    --red: #C94736;
-    --purple: #826CB0;
-    --purple-alt: #AF81BA;
-    --turquoise: #597C7C;
-    --brown: #93674F;
-    --magenta: #934F6F;
-    --blue: #3F82B2;
-    --navy-grey: #97A0AC;
-    --army-green: #7F9161;
-    --gold: #CAB361;
-    --orange: #BE6C49;
-    --white: #FFFFFF;
-
-    /* Box Shadow */
-    --box-shadow-custom: 0px 0px 14px 1px rgba(0, 0, 0, 0.10);
-
-    /* Font Families */
-    --font-family-sans: 'Public Sans', sans-serif;
-
-    /* Font Sizes */
-    --font-size-preset-1: 2rem;
-    --font-size-preset-2: 1.25rem;
-    --font-size-preset-3: 1rem;
-    --font-size-preset-4: 0.875rem;
-    --font-size-preset-5: 0.75rem;
-
-    /* Line Heights and Letter Spacing */
-    --line-height-120: 120%;
-    --line-height-150: 150%;
-    --letter-spacing-0: 0px;
-
-    /* Font Weights */
-    --font-weight-bold: 700;
-    --font-weight-regular: 400;
-
-    /* Spacing */
-    --spacing-500: 40px;
-    --spacing-400: 32px;
-    --spacing-300: 24px;
-    --spacing-250: 20px;
-    --spacing-200: 16px;
-    --spacing-150: 12px;
-    --spacing-100: 8px;
-    --spacing-50: 4px;
-}
-
-
 html,
 body {
     height: 100%;
@@ -67,3 +8,79 @@ body {
     font-family: var(--font-family-sans) !important;
 }
 
+:root {
+    /* Neutrals */
+    --grey-900: #1a1a2e;
+    /* Darker for text or cards */
+    --grey-500: #4e4e50;
+    /* For subtle dividers */
+    --grey-300: #a4a6b3;
+    /* For lighter accents */
+    --grey-100: #e6e8eb;
+    /* Background or inputs */
+    --beige-100: #f8f8f8;
+    /* Off-white background */
+
+    /* Primary Colors */
+    --blue: #3f82b2;
+    /* Primary action color */
+    --navy: #2c3e50;
+    /* Dark background alternative */
+    --navy-grey: #97a0ac;
+    /* Secondary text */
+
+    /* Accent Colors */
+    --orange: #f5a623;
+    /* Bright accent (buttons or highlights) */
+    --gold: #cab361;
+    /* Optional for financial insights */
+
+    /* State Colors */
+    --green: #27ae60;
+    /* Success */
+    --red: #e74c3c;
+    /* Errors or warnings */
+    --yellow: #f2cdac;
+    /* Alerts or mild warnings */
+    --cyan: #82c9d7;
+    /* Info or secondary interactions */
+
+    /* Additional Colors */
+    --purple: #9b59b6;
+    --magenta: #e84393;
+    --turquoise: #56c1c1;
+
+    --primary-color: var(--blue);
+    --accent-color: var(--orange);
+    --warn-color: var(--red);
+
+    --info-color: var(--cyan);
+    --success-color: var(--green);
+    --warning-color: var(--yellow);
+    --error-color: var(--red);
+
+    --font-family-sans: 'Public Sans', sans-serif;
+    --font-size-preset-1: 2rem;
+    --font-size-preset-2: 1.25rem;
+    --font-size-preset-3: 1rem;
+    --font-size-preset-4: 0.875rem;
+    --font-size-preset-5: 0.75rem;
+
+    --line-height-120: 120%;
+    --line-height-150: 150%;
+    --letter-spacing-0: 0px;
+
+    --font-weight-bold: 700;
+    --font-weight-regular: 400;
+
+    --spacing-500: 40px;
+    --spacing-400: 32px;
+    --spacing-300: 24px;
+    --spacing-250: 20px;
+    --spacing-200: 16px;
+    --spacing-150: 12px;
+    --spacing-100: 8px;
+    --spacing-50: 4px;
+
+    --box-shadow-custom: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}

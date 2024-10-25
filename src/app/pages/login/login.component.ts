@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../shared/auth/auth.service';
 
 @Component({
   selector: 'app-login',

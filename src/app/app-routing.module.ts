@@ -8,7 +8,7 @@ import { BudgetsComponent } from './pages/budgets/budgets.component';
 import { RecurringBillsComponent } from './pages/recurring-bills/recurring-bills.component';
 import { PotsComponent } from './pages/pots/pots.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { authGuard } from './guards/auth.guard';
+import { authGuard } from './shared/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
       { path: 'recurring-bills', component: RecurringBillsComponent },
       { path: '', redirectTo: 'overview', pathMatch: 'full' },
     ],
-    canActivate:[authGuard]
+    canActivate: [authGuard],
   },
   { path: 'login', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent },
