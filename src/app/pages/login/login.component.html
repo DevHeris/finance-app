@@ -1,8 +1,8 @@
-<mat-grid-list cols="2" rowHeight="fit">
-  <mat-grid-tile>
+<mat-grid-list cols="3" rowHeight="fit">
+  <mat-grid-tile colspan="1">
     <img src="/assets/images/logo-large.svg" alt="finance app logo" />
   </mat-grid-tile>
-  <mat-grid-tile>
+  <mat-grid-tile colspan="2">
     <mat-stepper #stepper>
       <mat-step
         [stepControl]="usernameFormGroup"
@@ -15,7 +15,7 @@
             <input matInput formControlName="username" required />
           </mat-form-field>
           <div>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-flat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -40,21 +40,26 @@
               [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide()"
             >
-              <mat-icon>{{
-                hide() ? "visibility_off" : "visibility"
-              }}</mat-icon>
+              <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
             </button>
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-flat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
       <mat-step label="Done">
-        <div>
+        <p class="done-p">You are now done.</p>
+        <div style="display: flex; justify-content: center; align-items: center">
           <button mat-button matStepperPrevious>Back</button>
-          <button (click)="onLogin()">Login</button>
+          @if (isLoggingIn) {
+            <button fab style="background: transparent; outline: none; border: none">
+              <mat-spinner diameter="30"></mat-spinner>
+            </button>
+          } @else {
+            <button mat-flat-button (click)="onLogin()">Login</button>
+          }
         </div>
       </mat-step>
     </mat-stepper>

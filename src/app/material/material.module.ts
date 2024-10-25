@@ -5,18 +5,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
-const MaterialComponents = [
+const MaterialModules = [
   MatGridListModule,
   MatButtonModule,
   MatInputModule,
   MatFormFieldModule,
   MatStepperModule,
   MatIconModule,
+  MatProgressSpinner,
 ];
 
 @NgModule({
-  imports: [MaterialComponents],
-  exports: [MaterialComponents],
+  imports: [MaterialModules],
+  exports: [MaterialModules],
 })
 export class MaterialModule {}

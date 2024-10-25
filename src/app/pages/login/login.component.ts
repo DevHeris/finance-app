@@ -2,7 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  OnChanges,
+  OnInit,
   signal,
+  SimpleChanges,
 } from '@angular/core';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -23,6 +26,9 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   private _formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
+  isLoggingIn: boolean = false;
+
+  ngOnInit(): void {}
 
   usernameFormGroup = this._formBuilder.group({
     username: ['', Validators.required],
@@ -33,12 +39,16 @@ export class LoginComponent {
   });
 
   onLogin(): void {
-    if (this.usernameFormGroup.valid && this.passwordFormGroup.valid) {
-      this.authService.login(
-        String(this.usernameFormGroup.controls.username.value),
-        String(this.passwordFormGroup.controls.password.value),
-      );
-    }
+    this.isLoggingIn = true;
+    setTimeout(() => {
+      if (this.usernameFormGroup.valid && this.passwordFormGroup.valid) {
+        this.authService.login(
+          String(this.usernameFormGroup.controls.username.value),
+          String(this.passwordFormGroup.controls.password.value),
+        );
+        this.isLoggingIn = false;
+      }
+    }, 3000);
   }
 
   hide = signal(true);
