@@ -17,15 +17,9 @@ import { AuthService } from '../../shared/auth/auth.service';
 export class LoginComponent implements OnInit {
   private _formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
-  isLoggingIn: boolean = false;
 
-  ngOnInit(): void {
-    this.authService.isLoggingIn$.subscribe({
-      next: (loggingIn) => {
-        this.isLoggingIn = loggingIn;
-      },
-    });
-  }
+  isLoggingIn: boolean = false;
+  hide = signal(true);
 
   usernameFormGroup = this._formBuilder.group({
     username: ['', Validators.required],
@@ -35,6 +29,14 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   });
 
+  ngOnInit(): void {
+    this.authService.isLoggingIn$.subscribe({
+      next: (loggingIn) => {
+        this.isLoggingIn = loggingIn;
+      },
+    });
+  }
+
   onLogin(): void {
     if (this.usernameFormGroup.valid && this.passwordFormGroup.valid) {
       const username = this.usernameFormGroup.controls.username.value!;
@@ -43,8 +45,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  hide = signal(true);
-  clickEvent(event: MouseEvent) {
+  toggleVisibility(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }

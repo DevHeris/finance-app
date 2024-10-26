@@ -44,14 +44,14 @@ export class AuthService {
 
       if (storedUser.username === username && storedUser.password === password) {
         this.router.navigate(['/']);
-        this.materialService.openSnackBar("You're now logged in!", 'Cancel', {
+        this.materialService.openSnackBar('Login successful! Welcome!', 'Cancel', {
           horizontalPosition: 'end',
           verticalPosition: 'top',
           duration: 10000,
         });
       } else {
         this.materialService.openSnackBar('Invalid login credentials!', 'Cancel', {
-          horizontalPosition: 'start',
+          horizontalPosition: 'end',
           verticalPosition: 'top',
           duration: 5000,
         });

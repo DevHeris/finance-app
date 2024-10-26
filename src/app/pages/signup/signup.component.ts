@@ -18,7 +18,9 @@ import { confirmPasswordValidator } from '../../shared/validators/confirm-passwo
 export class SignupComponent implements OnInit {
   private _formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
+
   isSigningUp: boolean = false;
+  hide = signal(true);
 
   userDetailsFormGroup = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -33,9 +35,6 @@ export class SignupComponent implements OnInit {
     { validators: confirmPasswordValidator() },
   );
 
-  hidePassword = signal(true);
-  hideConfirmPassword = signal(true);
-
   ngOnInit(): void {
     this.authService.isSigningUp$.subscribe({
       next: (signingUp) => {
@@ -44,8 +43,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  hide = signal(true);
-  clickEvent(event: MouseEvent) {
+  toggleVisibility(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
@@ -55,13 +53,9 @@ export class SignupComponent implements OnInit {
       const email = this.userDetailsFormGroup.controls.email.value!;
       const username = this.userDetailsFormGroup.controls.username.value!;
       const password = this.passwordFormGroup.controls.password.value!;
-      const confirmPassword = this.passwordFormGroup.controls.confirmPassword.value!;
+      //   const confirmPassword = this.passwordFormGroup.controls.confirmPassword.value!;
 
-      if (password === confirmPassword) {
-        this.authService.signup(email, username, password);
-      } else {
-        alert('Passwords do not match!');
-      }
+      this.authService.signup(email, username, password);
     }
   }
 }

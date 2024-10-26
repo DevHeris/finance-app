@@ -7,8 +7,7 @@
     <mat-stepper #stepper class="stepper-container" orientation="horizontal">
       <!-- Step 1: User Details -->
       <mat-step [stepControl]="userDetailsFormGroup" label="User Details">
-        <p class="login-text">Signup for your finance account...</p>
-
+        <p class="login-text">Signup for your finance account!</p>
         <form [formGroup]="userDetailsFormGroup">
           <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
@@ -52,11 +51,11 @@
           <br />
           <br />
           <div>
-            <button mat-flat-button color="primary" matStepperNext>Next</button>
+            <button mat-flat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
-
+      <!-- Step 2: Password -->
       <mat-step [stepControl]="passwordFormGroup" label="Set Password">
         <form [formGroup]="passwordFormGroup">
           <mat-form-field appearance="fill">
@@ -82,7 +81,7 @@
             <button
               mat-icon-button
               matSuffix
-              (click)="clickEvent($event)"
+              (click)="toggleVisibility($event)"
               [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide()"
             >
@@ -98,12 +97,6 @@
               formControlName="confirmPassword"
               required
             />
-            @if (
-              passwordFormGroup.hasError("passwordsMismatch") &&
-              !passwordFormGroup.controls["confirmPassword"].hasError("required")
-            ) {
-              <mat-error>Must be the same as the password you entered</mat-error>
-            }
             @if (passwordFormGroup.controls["confirmPassword"].hasError("required")) {
               <mat-error>
                 Password confirmation is
@@ -113,18 +106,27 @@
             <button
               mat-icon-button
               matSuffix
-              (click)="clickEvent($event)"
+              (click)="toggleVisibility($event)"
               [attr.aria-pressed]="hide()"
               [attr.aria-label]="'Toggle confirm password visibility'"
             >
               <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
             </button>
           </mat-form-field>
+          <!-- Form Group Error (Passwords Mismatch) -->
+          @if (
+            passwordFormGroup.hasError("passwordsMismatch") &&
+            !passwordFormGroup.controls["confirmPassword"].hasError("required")
+          ) {
+            <mat-error class="mat-body-small">
+              Must be the same as the password you entered
+            </mat-error>
+          }
           <br />
           <br />
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-flat-button color="primary" matStepperNext>Next</button>
+            <button mat-flat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -136,7 +138,14 @@
           <button mat-button matStepperPrevious>Back</button>
 
           @if (!isSigningUp) {
-            <button mat-flat-button color="primary" (click)="onSignup()">Signup</button>
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="onSignup()"
+              [disabled]="!userDetailsFormGroup.valid || !passwordFormGroup.valid"
+            >
+              Signup
+            </button>
           } @else {
             <button fab style="background: transparent; border: none">
               <mat-spinner diameter="30"></mat-spinner>
