@@ -10,7 +10,7 @@
 
 ::ng-deep .mat-stepper-horizontal,
 .mat-stepper-vertical {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-family-sans) !important;
 }
 
 
