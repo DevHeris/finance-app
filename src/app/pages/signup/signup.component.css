@@ -1,16 +1,44 @@
-mat-grid-list {
-    background-color: var(--grey-900);
+/* Layout Container */
+.signup-container {
+    display: grid;
     height: 100dvh;
+    width: 100%;
     overflow: hidden;
+    background-color: var(--grey-900);
+    grid-template-columns: 1fr 2fr;
 }
 
+/* Logo Section */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-image {
+    max-width: 60%;
+    height: auto;
+}
+
+/* Content Section */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Background Image */
 .background-image-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
 }
 
 .background-image {
@@ -21,47 +49,68 @@ mat-grid-list {
     object-fit: cover;
 }
 
+/* Stepper Styling */
 mat-stepper {
-    position: relative;
     z-index: 2;
     width: 100%;
-    height: 100%;
-    padding-top: 3.5em;
-    padding-inline: 2em;
+    max-width: 400px;
+    margin-top: 2rem;
+    padding: 1rem;
 }
 
-.mat-stepper-horizontal {
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
     background-color: transparent;
     backdrop-filter: blur(5px);
-}
-
-mat-grid-tile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.stepper-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .button-group {
     display: flex;
     gap: 1rem;
     align-items: center;
+    margin-top: 1rem;
 }
 
-.login-text {
+.signup-text {
     color: var(--cyan);
     font-weight: bold;
 }
 
+
+/* Angular Material Overrides */
 ::ng-deep .mat-mdc-form-field-error-wrapper {
     padding: 0 !important;
 }
 
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: var(--grey-900) !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .signup-container {
+        display: block;
+    }
+
+    .content-container {
+        padding: 1rem;
+        height: 100%;
+    }
+
+    mat-stepper {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .logo-image {
+        display: none;
+    }
+
+    .button-group {
+        gap: 0.5rem;
+    }
+
+    .background-image {
+        object-fit: contain;
+    }
 }

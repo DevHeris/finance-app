@@ -3,6 +3,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/auth/auth.service';
 import { confirmPasswordValidator } from '../../shared/validators/confirm-password';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-signup',
@@ -18,9 +19,11 @@ import { confirmPasswordValidator } from '../../shared/validators/confirm-passwo
 export class SignupComponent implements OnInit {
   private _formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
+  private breakpointObserver = inject(BreakpointObserver);
 
   isSigningUp: boolean = false;
   hide = signal(true);
+  stepperOrientation: 'horizontal' | 'vertical' = 'horizontal';
 
   userDetailsFormGroup = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -36,6 +39,10 @@ export class SignupComponent implements OnInit {
   );
 
   ngOnInit(): void {
+    this.breakpointObserver.observe(Breakpoints.Handset).subscribe((result) => {
+      this.stepperOrientation = result.matches ? 'vertical' : 'horizontal';
+    });
+
     this.authService.isSigningUp$.subscribe({
       next: (signingUp) => {
         this.isSigningUp = signingUp;

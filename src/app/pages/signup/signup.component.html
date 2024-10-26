@@ -1,9 +1,11 @@
-<mat-grid-list cols="3" rowHeight="fit">
-  <mat-grid-tile colspan="1">
-    <img src="/assets/images/logo-large.svg" alt="app logo" />
-  </mat-grid-tile>
+<div class="signup-container">
+  <!-- Logo Section -->
+  <div class="logo-container">
+    <img src="/assets/images/logo-large.svg" alt="finance app logo" class="logo-image" />
+  </div>
 
-  <mat-grid-tile colspan="2">
+  <!-- Content Section -->
+  <div class="content-container">
     <div class="background-image-wrapper">
       <img
         src="/person-office-analyzing-checking-finance-graphs.jpg"
@@ -11,10 +13,10 @@
         class="background-image"
       />
     </div>
-    <mat-stepper #stepper class="stepper-container" orientation="horizontal">
+    <mat-stepper #stepper class="stepper-container" [orientation]="stepperOrientation">
       <!-- Step 1: User Details -->
       <mat-step [stepControl]="userDetailsFormGroup" label="User Details">
-        <p class="login-text">Signup for your finance account!</p>
+        <p class="signup-text">Signup for your finance account!</p>
         <form [formGroup]="userDetailsFormGroup">
           <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
@@ -131,7 +133,7 @@
           }
           <br />
           <br />
-          <div>
+          <div class="button-group">
             <button mat-button matStepperPrevious>Back</button>
             <button mat-flat-button matStepperNext>Next</button>
           </div>
@@ -140,7 +142,11 @@
 
       <!-- Step 3: Confirmation -->
       <mat-step label="Confirmation">
-        <p class="login-text">Click the button to create your account!</p>
+        @if (!userDetailsFormGroup.valid || !passwordFormGroup.valid) {
+          <p class="signup-text">Make sure you have filled the previous steps correctly!</p>
+        } @else {
+          <p class="signup-text">Click the button to create your account!</p>
+        }
         <div class="button-group">
           <button mat-button matStepperPrevious>Back</button>
 
@@ -163,5 +169,5 @@
         </div>
       </mat-step>
     </mat-stepper>
-  </mat-grid-tile>
-</mat-grid-list>
+  </div>
+</div>
