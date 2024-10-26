@@ -129,4 +129,8 @@ mat-stepper {
         object-fit: contain;
     }
 
+    .button-group {
+        flex-direction: row;
+    }
+
 }
