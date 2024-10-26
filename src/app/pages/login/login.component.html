@@ -4,6 +4,13 @@
   </mat-grid-tile>
 
   <mat-grid-tile colspan="2">
+    <div class="background-image-wrapper">
+      <img
+        src="/person-office-analyzing-checking-finance-graphs.jpg"
+        alt="Background"
+        class="background-image"
+      />
+    </div>
     <mat-stepper #stepper class="stepper-container">
       <!-- Step 1: Username -->
       <mat-step
@@ -11,7 +18,7 @@
         [stepControl]="usernameFormGroup"
         errorMessage="Username is required."
       >
-        <p class="login-text">Welcome, login to Your Account!</p>
+        <p class="login-text">Welcome, login to Your account!</p>
 
         <form [formGroup]="usernameFormGroup">
           <mat-form-field>
