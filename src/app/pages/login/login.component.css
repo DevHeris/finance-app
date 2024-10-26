@@ -1,7 +1,9 @@
 /* Layout Container */
 .login-container {
     display: grid;
-    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    overflow: hidden;
     background-color: var(--grey-900);
     grid-template-columns: 1fr 2fr;
 }
@@ -27,6 +29,7 @@
     position: relative;
     flex: 1;
     overflow: hidden;
+    height: 100%;
 }
 
 /* Background Image */
@@ -121,16 +124,10 @@ mat-stepper {
     }
 
     .button-group {
-        flex-direction: column;
         gap: 0.5rem;
     }
 
     .background-image {
         object-fit: contain;
     }
-
-    .button-group {
-        flex-direction: row;
-    }
-
 }
