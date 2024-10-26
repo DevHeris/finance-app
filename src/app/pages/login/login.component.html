@@ -70,9 +70,13 @@
         </form>
       </mat-step>
 
-      <!-- Step 3: Done -->
-      <mat-step label="Done">
-        <p class="login-text">Click the login button to continue!</p>
+      <!-- Step 3: Confirmation -->
+      <mat-step label="Confirmation">
+        @if (!usernameFormGroup.valid || !passwordFormGroup.valid) {
+          <p class="login-text">Make sure you fill the previous steps correctly!</p>
+        } @else {
+          <p class="login-text">Click the login button to continue!</p>
+        }
         <div class="button-group">
           <button mat-button matStepperPrevious>Back</button>
 
