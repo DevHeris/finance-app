@@ -65,3 +65,22 @@ mat-grid-tile {
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: var(--grey-900) !important;
 }
+
+
+.signup-container {
+    text-align: center;
+    margin-top: 1rem;
+    z-index: 2;
+    color: white;
+    font-weight: bold;
+}
+
+.signup-link {
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
