@@ -12,14 +12,45 @@
         <form [formGroup]="userDetailsFormGroup">
           <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="email" required />
+            <input
+              matInput
+              formControlName="email"
+              type="email"
+              required
+              placeholder="Ex. pat@example.com"
+            />
+            @if (
+              userDetailsFormGroup.controls["email"].hasError("email") &&
+              !userDetailsFormGroup.controls["email"].hasError("required")
+            ) {
+              <mat-error>Please enter a valid email address</mat-error>
+            }
+            @if (userDetailsFormGroup.controls["email"].hasError("required")) {
+              <mat-error>
+                Email is
+                <strong>required</strong>
+              </mat-error>
+            }
           </mat-form-field>
           &nbsp;
           <mat-form-field appearance="fill">
             <mat-label>Username</mat-label>
             <input matInput formControlName="username" required />
+            @if (
+              userDetailsFormGroup.controls["username"].hasError("minlength") &&
+              !userDetailsFormGroup.controls["username"].hasError("required")
+            ) {
+              <mat-error>Username must be at least 3 characters long</mat-error>
+            }
+            @if (userDetailsFormGroup.controls["username"].hasError("required")) {
+              <mat-error>
+                Username is
+                <strong>required</strong>
+              </mat-error>
+            }
           </mat-form-field>
-
+          <br />
+          <br />
           <div>
             <button mat-flat-button color="primary" matStepperNext>Next</button>
           </div>
@@ -36,6 +67,18 @@
               formControlName="password"
               required
             />
+            @if (
+              passwordFormGroup.controls["password"].hasError("minlength") &&
+              !passwordFormGroup.controls["password"].hasError("required")
+            ) {
+              <mat-error>password must be at least 6 characters long</mat-error>
+            }
+            @if (passwordFormGroup.controls["password"].hasError("required")) {
+              <mat-error>
+                Password is
+                <strong>required</strong>
+              </mat-error>
+            }
             <button
               mat-icon-button
               matSuffix
@@ -55,6 +98,18 @@
               formControlName="confirmPassword"
               required
             />
+            @if (
+              passwordFormGroup.hasError("passwordsMismatch") &&
+              !passwordFormGroup.controls["confirmPassword"].hasError("required")
+            ) {
+              <mat-error>Must be the same as the password you entered</mat-error>
+            }
+            @if (passwordFormGroup.controls["confirmPassword"].hasError("required")) {
+              <mat-error>
+                Password confirmation is
+                <strong>required</strong>
+              </mat-error>
+            }
             <button
               mat-icon-button
               matSuffix
@@ -65,7 +120,8 @@
               <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
             </button>
           </mat-form-field>
-
+          <br />
+          <br />
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-flat-button color="primary" matStepperNext>Next</button>
@@ -86,6 +142,8 @@
               <mat-spinner diameter="30"></mat-spinner>
             </button>
           }
+          <br />
+          <br />
         </div>
       </mat-step>
     </mat-stepper>

@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/auth/auth.service';
+import { confirmPasswordValidator } from '../../shared/validators/confirm-password';
 
 @Component({
   selector: 'app-signup',
@@ -24,10 +25,13 @@ export class SignupComponent implements OnInit {
     username: ['', [Validators.required, Validators.minLength(3)]],
   });
 
-  passwordFormGroup = this._formBuilder.group({
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', Validators.required],
-  });
+  passwordFormGroup = this._formBuilder.group(
+    {
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+    },
+    { validators: confirmPasswordValidator() },
+  );
 
   hidePassword = signal(true);
   hideConfirmPassword = signal(true);
