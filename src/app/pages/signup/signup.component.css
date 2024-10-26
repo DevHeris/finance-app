@@ -8,6 +8,12 @@
     grid-template-columns: 1fr 2fr;
 }
 
+::ng-deep .mat-stepper-horizontal,
+.mat-stepper-vertical {
+    font-family: var(--font-family-sans);
+}
+
+
 /* Logo Section */
 .logo-container {
     display: flex;

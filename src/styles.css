@@ -8,6 +8,12 @@ body {
     font-family: var(--font-family-sans) !important;
 }
 
+/* Override Angular Material's Roboto font with Public Sans */
+::ng-deep [class^="mat-"],
+[class*=" mat-"] {
+    font-family: 'Public Sans', sans-serif !important;
+}
+
 :root {
     /* Neutrals */
     --grey-900: #201F24;
@@ -15,13 +21,6 @@ body {
     --grey-300: #B3B3B3;
     --grey-100: #F2F2F2;
 
-
-    /* Darker for text or cards */
-    --grey-500: #4e4e50;
-    /* For subtle dividers */
-    --grey-300: #a4a6b3;
-    /* For lighter accents */
-    --grey-100: #e6e8eb;
     /* Background or inputs */
     --beige-100: #f8f8f8;
     /* Off-white background */
@@ -41,7 +40,7 @@ body {
     /* Optional for financial insights */
 
     /* State Colors */
-    --green: #27ae60;
+    --green: #277C78;
     /* Success */
     --red: #e74c3c;
     /* Errors or warnings */

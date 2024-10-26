@@ -1,4 +1,4 @@
-.example-container {
+.layout-container {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -13,7 +13,7 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-    width: 20em;
+    width: 19em;
     height: 100dvh;
 }
 
@@ -33,7 +33,12 @@ mat-sidenav {
     display: block !important;
 }
 
-.example-sidenav-container {
+::ng-deep .mdc-list-item__primary-text {
+    color: var(--grey-100) !important;
+    font-family: var(--font-family-sans) !important;
+}
+
+.layout-sidenav-container {
     flex: 1;
 }
 
@@ -54,6 +59,11 @@ mat-sidenav {
 
 .active {
     background-color: whitesmoke;
+    border-left: 4px solid var(--green);
+}
+
+::ng-deep .mat-mdc-nav-list .mat-mdc-list-item {
+    border-radius: 0px 10px 10px 0px !important;
 }
 
 .active span {
@@ -85,18 +95,18 @@ span {
     padding-top: 3em;
     padding-bottom: 3em;
     display: flex;
-    padding-left: 2em;
+    padding-left: 1.7em;
 }
 
 .sidenav-grid>mat-nav-list {
     grid-row: 2/3;
-    padding-left: 1em;
+    padding-right: 1.5em;
 }
 
 .sidenav-grid>.minimize-container {
     grid-row: 3/4;
     padding-bottom: 2em;
-    padding-left: 2em;
+    padding-left: 1.7em;
     display: flex;
     gap: 1em;
     align-items: center;
