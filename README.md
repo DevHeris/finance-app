@@ -1,5 +1,6 @@
 # FinanceApp
-![login Screenshot](public/screenshot.jpg)
+
+![Signup-Mobile Screenshot](public/signup-screen-mobile.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
 
