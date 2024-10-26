@@ -1,0 +1,104 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+mat-sidenav-container {
+    background-color: whitesmoke;
+}
+
+mat-sidenav {
+    width: 20em;
+    height: 100dvh;
+}
+
+.sidenav {
+    background-color: var(--grey-900);
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+}
+
+::ng-deep mat-sidenav.collapsed {
+    width: 5em !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+::ng-deep .mat-drawer[style*="visibility: hidden"] {
+    display: block !important;
+}
+
+.example-sidenav-container {
+    flex: 1;
+}
+
+.mat-list-item-div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.nav-text {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.sidenav.collapsed .nav-text {
+    opacity: 0;
+}
+
+.active {
+    background-color: whitesmoke;
+}
+
+.active span {
+    color: var(--grey-900);
+}
+
+span {
+    font-weight: bold;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+.rotated {
+    transform: rotate(180deg);
+}
+
+.sidenav-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    width: 100%;
+}
+
+.sidenav-grid>.img {
+    grid-row: 1/2;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    display: flex;
+    padding-left: 2em;
+}
+
+.sidenav-grid>mat-nav-list {
+    grid-row: 2/3;
+    padding-left: 1em;
+}
+
+.sidenav-grid>.minimize-container {
+    grid-row: 3/4;
+    padding-bottom: 2em;
+    padding-left: 2em;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    cursor: pointer;
+}

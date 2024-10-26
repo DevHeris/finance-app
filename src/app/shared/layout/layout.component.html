@@ -1,4 +1,110 @@
-<div>
-  <app-sidebar></app-sidebar>
-  <router-outlet></router-outlet>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-sidenav-container
+    class="example-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [(opened)]="isSidenavOpen"
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+      class="sidenav"
+      [class.collapsed]="!isSidenavOpen"
+    >
+      <div class="sidenav-grid">
+        <div class="img">
+          <img
+            src="/assets/images/logo-{{ isSidenavOpen ? 'large' : 'small' }}.svg"
+            alt="finance logo"
+          />
+        </div>
+
+        <mat-nav-list>
+          <a mat-list-item routerLink="/overview" routerLinkActive="active">
+            <div class="mat-list-item-div">
+              <img
+                src="/assets/images/icon-nav-overview{{
+                  isActiveRoute('/overview') ? '-active' : ''
+                }}.svg"
+                alt="Overview Icon"
+              />
+              @if (isSidenavOpen) {
+                <span class="nav-text">Overview</span>
+              }
+            </div>
+          </a>
+
+          <a mat-list-item routerLink="/transactions" routerLinkActive="active">
+            <div class="mat-list-item-div">
+              <img
+                src="/assets/images/icon-nav-transactions{{
+                  isActiveRoute('/transactions') ? '-active' : ''
+                }}.svg"
+                alt="Transactions Icon"
+              />
+              @if (isSidenavOpen) {
+                <span class="nav-text">Transactions</span>
+              }
+            </div>
+          </a>
+
+          <a mat-list-item routerLink="/budgets" routerLinkActive="active">
+            <div class="mat-list-item-div">
+              <img
+                src="/assets/images/icon-nav-budgets{{
+                  isActiveRoute('/budgets') ? '-active' : ''
+                }}.svg"
+                alt="Budgets Icon"
+              />
+              @if (isSidenavOpen) {
+                <span class="nav-text">Budgets</span>
+              }
+            </div>
+          </a>
+
+          <a mat-list-item routerLink="/pots" routerLinkActive="active">
+            <div class="mat-list-item-div">
+              <img
+                src="/assets/images/icon-nav-pots{{ isActiveRoute('/pots') ? '-active' : '' }}.svg"
+                alt="Pots Icon"
+              />
+              @if (isSidenavOpen) {
+                <span class="nav-text">Pots</span>
+              }
+            </div>
+          </a>
+
+          <a mat-list-item routerLink="/recurring-bills" routerLinkActive="active">
+            <div class="mat-list-item-div">
+              <img
+                src="/assets/images/icon-nav-recurring-bills{{
+                  isActiveRoute('/recurring-bills') ? '-active' : ''
+                }}.svg"
+                alt="Recurring Bills Icon"
+              />
+              @if (isSidenavOpen) {
+                <span class="nav-text">Recurring Bills</span>
+              }
+            </div>
+          </a>
+        </mat-nav-list>
+        <div class="minimize-container" (click)="toggleSidenav()">
+          <img
+            src="/assets/images/icon-minimize-menu.svg"
+            alt="minimize menu"
+            class="arrow"
+            [class.rotated]="isRotated"
+          />
+          @if (isSidenavOpen) {
+            <span>Minimize Menu</span>
+          }
+        </div>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

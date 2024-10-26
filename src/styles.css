@@ -10,7 +10,12 @@ body {
 
 :root {
     /* Neutrals */
-    --grey-900: #1a1a2e;
+    --grey-900: #201F24;
+    --grey-500: #696868;
+    --grey-300: #B3B3B3;
+    --grey-100: #F2F2F2;
+
+
     /* Darker for text or cards */
     --grey-500: #4e4e50;
     /* For subtle dividers */

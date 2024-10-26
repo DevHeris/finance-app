@@ -8,7 +8,6 @@ import { TransactionsComponent } from './pages/transactions/transactions.compone
 import { BudgetsComponent } from './pages/budgets/budgets.component';
 import { PotsComponent } from './pages/pots/pots.component';
 import { RecurringBillsComponent } from './pages/recurring-bills/recurring-bills.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -16,7 +15,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MaterialModule } from './shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
-import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +24,10 @@ import { HeaderComponent } from './shared/header/header.component';
     BudgetsComponent,
     PotsComponent,
     RecurringBillsComponent,
-    SidebarComponent,
     LayoutComponent,
     PageNotFoundComponent,
     LoginComponent,
     SignupComponent,
-    HeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
   providers: [provideAnimationsAsync()],
