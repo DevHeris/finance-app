@@ -1,12 +1,13 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { AuthService } from '../../shared/auth/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
@@ -17,9 +18,11 @@ import { AuthService } from '../../shared/auth/auth.service';
 export class LoginComponent implements OnInit {
   private _formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
+  private breakpointObserver = inject(BreakpointObserver);
 
-  isLoggingIn: boolean = false;
+  isLoggingIn = false;
   hide = signal(true);
+  stepperOrientation: 'horizontal' | 'vertical' = 'horizontal';
 
   usernameFormGroup = this._formBuilder.group({
     username: ['', Validators.required],
@@ -30,10 +33,12 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.breakpointObserver.observe(Breakpoints.Handset).subscribe((result) => {
+      this.stepperOrientation = result.matches ? 'vertical' : 'horizontal';
+    });
+
     this.authService.isLoggingIn$.subscribe({
-      next: (loggingIn) => {
-        this.isLoggingIn = loggingIn;
-      },
+      next: (loggingIn) => (this.isLoggingIn = loggingIn),
     });
   }
 
@@ -45,7 +50,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  toggleVisibility(event: MouseEvent) {
+  toggleVisibility(event: MouseEvent): void {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
