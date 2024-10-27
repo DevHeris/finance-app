@@ -15,12 +15,7 @@ mat-sidenav-container {
 mat-sidenav {
     width: 19em;
     height: 100dvh;
-}
-
-.sidenav {
     background-color: var(--grey-900);
-    overflow: hidden;
-    transition: width 0.3s ease-in-out;
 }
 
 ::ng-deep mat-sidenav.collapsed {
@@ -33,45 +28,8 @@ mat-sidenav {
     display: block !important;
 }
 
-::ng-deep .mdc-list-item__primary-text {
-    color: var(--grey-100) !important;
-    font-family: var(--font-family-sans) !important;
-}
-
 .layout-sidenav-container {
     flex: 1;
-}
-
-.mat-list-item-div {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-}
-
-.nav-text {
-    transition: opacity 0.3s ease-in-out;
-    opacity: 1;
-}
-
-.sidenav.collapsed .nav-text {
-    opacity: 0;
-}
-
-.active {
-    background-color: whitesmoke;
-    border-left: 4px solid var(--green);
-}
-
-::ng-deep .mat-mdc-nav-list .mat-mdc-list-item {
-    border-radius: 0px 10px 10px 0px !important;
-}
-
-.active span {
-    color: var(--grey-900);
-}
-
-span {
-    font-weight: bold;
 }
 
 .arrow {
@@ -87,7 +45,6 @@ span {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     height: 100%;
-    width: 100%;
 }
 
 .sidenav-grid>.img {
@@ -95,20 +52,39 @@ span {
     padding-top: 3em;
     padding-bottom: 3em;
     display: flex;
-    padding-left: 1.7em;
-}
-
-.sidenav-grid>mat-nav-list {
-    grid-row: 2/3;
-    padding-right: 1.5em;
+    padding-left: 1.4em;
 }
 
 .sidenav-grid>.minimize-container {
     grid-row: 3/4;
     padding-bottom: 2em;
-    padding-left: 1.7em;
+    padding-left: 1.4em;
     display: flex;
     gap: 1em;
     align-items: center;
     cursor: pointer;
+}
+
+mat-drawer {
+    background-color: var(--grey-900);
+}
+
+.bottom-sheet {
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-inline: 1em;
+    border-radius: 16px 16px 0 0;
+}
+
+span {
+    font-weight: bold;
+}
+
+mat-sidenav-content {
+    overflow: auto;
+    /* I'll check later */
+    padding-bottom: 12em;
 }

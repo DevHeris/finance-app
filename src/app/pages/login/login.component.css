@@ -107,6 +107,7 @@ mat-stepper {
     background-color: var(--grey-900) !important;
 }
 
+
 /* Mobile Responsiveness */
 @media (max-width: 600px) {
     .login-container {

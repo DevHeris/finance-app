@@ -1,0 +1,56 @@
+<mat-nav-list>
+  <a mat-list-item routerLink="/overview" routerLinkActive="active">
+    <div class="mat-list-item-div">
+      <img
+        src="/assets/images/icon-nav-overview{{ isActiveRoute('/overview') ? '-active' : '' }}.svg"
+        alt="Overview Icon"
+      />
+
+      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Overview</span>
+    </div>
+  </a>
+  <a mat-list-item routerLink="/transactions" routerLinkActive="active">
+    <div class="mat-list-item-div">
+      <img
+        src="/assets/images/icon-nav-transactions{{
+          isActiveRoute('/transactions') ? '-active' : ''
+        }}.svg"
+        alt="Transactions Icon"
+      />
+
+      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Transactions</span>
+    </div>
+  </a>
+  <a mat-list-item routerLink="/budgets" routerLinkActive="active">
+    <div class="mat-list-item-div">
+      <img
+        src="/assets/images/icon-nav-budgets{{ isActiveRoute('/budgets') ? '-active' : '' }}.svg"
+        alt="Budgets Icon"
+      />
+
+      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Budgets</span>
+    </div>
+  </a>
+  <a mat-list-item routerLink="/pots" routerLinkActive="active">
+    <div class="mat-list-item-div">
+      <img
+        src="/assets/images/icon-nav-pots{{ isActiveRoute('/pots') ? '-active' : '' }}.svg"
+        alt="Pots Icon"
+      />
+
+      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Pots</span>
+    </div>
+  </a>
+  <a mat-list-item routerLink="/recurring-bills" routerLinkActive="active">
+    <div class="mat-list-item-div">
+      <img
+        src="/assets/images/icon-nav-recurring-bills{{
+          isActiveRoute('/recurring-bills') ? '-active' : ''
+        }}.svg"
+        alt="Recurring Bills Icon"
+      />
+
+      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Recurring Bills</span>
+    </div>
+  </a>
+</mat-nav-list>

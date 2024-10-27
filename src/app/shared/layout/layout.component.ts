@@ -17,15 +17,16 @@ export class LayoutComponent {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this._mobileQueryListener);
+
+    // Automatically close sidenav on mobile
+    if (this.mobileQuery.matches) {
+      this.isSidenavOpen = false;
+    }
   }
 
   toggleSidenav() {
     this.isSidenavOpen = !this.isSidenavOpen;
     this.isRotated = !this.isRotated;
-  }
-
-  isActiveRoute(route: string): boolean {
-    return window.location.pathname === route;
   }
 
   ngOnDestroy(): void {
