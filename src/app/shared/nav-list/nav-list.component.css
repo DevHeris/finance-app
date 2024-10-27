@@ -28,7 +28,7 @@ mat-nav-list {
 
 .active {
     background-color: var(--o-white);
-    border-left: 4px solid var(--green);
+    border-left: 3px solid var(--green);
 }
 
 .active span {
@@ -62,7 +62,7 @@ span {
 
     .active {
         border-left: none;
-        border-bottom: 4px solid var(--green);
+        border-bottom: 3px solid var(--green);
     }
 
     .mat-list-item-div {
