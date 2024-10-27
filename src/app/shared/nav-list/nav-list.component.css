@@ -59,17 +59,18 @@ span {
         padding-top: .5em;
     }
 
+
+    ::ng-deep .mat-mdc-nav-list .mat-mdc-list-item {
+        border-radius: 10px 10px 0px 0px !important;
+    }
+
+    ::ng-deep .mat-mdc-nav-list .mat-mdc-list-item {
+        border-radius: 10px 10px 0px 0px !important;
+    }
+
     .active {
         border-left: none;
         border-bottom: 4px solid var(--green);
-    }
-
-    ::ng-deep .mat-mdc-nav-list .mat-mdc-list-item {
-        border-radius: 10px 10px 0px 0px !important;
-    }
-
-    ::ng-deep .mat-mdc-nav-list .mat-mdc-list-item {
-        border-radius: 10px 10px 0px 0px !important;
     }
 
     .mat-list-item-div {
@@ -77,10 +78,6 @@ span {
         justify-content: center;
         padding: .5em 0;
         gap: .5em;
-    }
-
-    ::ng-deep .mdc-list-item.mdc-list-item--with-one-line {
-        height: 100% !important;
     }
 
     mat-nav-list {
