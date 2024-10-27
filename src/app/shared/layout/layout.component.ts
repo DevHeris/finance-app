@@ -1,13 +1,15 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { NavListComponent } from '../nav-list/nav-list.component';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
-export class LayoutComponent implements OnDestroy {
+export class LayoutComponent implements OnDestroy, OnInit {
   isSidenavOpen = true;
   isRotated = false;
 
@@ -30,11 +32,20 @@ export class LayoutComponent implements OnDestroy {
 
     this.mobileQuery.addEventListener('change', this.mobileQueryListener);
     this.tabletQuery.addEventListener('change', this.tabletQueryListener);
+  }
 
-    // Close sidenav on mobile and tablet views
+  ngOnInit(): void {
     if (this.mobileQuery.matches || this.tabletQuery.matches) {
+      this.openBottomSheet();
       this.isSidenavOpen = false;
     }
+  }
+
+  private bottomSheet = inject(MatBottomSheet);
+  openBottomSheet(): void {
+    this.bottomSheet.open(NavListComponent, {
+      panelClass: 'custom-bottom-sheet',
+    });
   }
 
   toggleSidenav() {
