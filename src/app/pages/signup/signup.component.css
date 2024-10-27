@@ -80,7 +80,7 @@ mat-stepper {
     text-align: center;
     margin-top: 1rem;
     z-index: 2;
-    color: var(--white);
+    color: var(--o-white);
     font-weight: bold;
 }
 

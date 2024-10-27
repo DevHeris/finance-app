@@ -1,12 +1,10 @@
-* {
-    color: var(--p-grey-900);
-}
-
 .wrapper {
     padding: 0 1.7em;
     background-color: var(--p-beige-100);
     height: 100vh;
     overflow: scroll;
+    color: var(--p-grey-900);
+
 }
 
 .title-text {
@@ -34,4 +32,9 @@
     background-color: var(--o-white);
     border-radius: .6em;
     padding: 1.7em 1.2em;
+}
+
+.grid-1-item:first-child {
+    background-color: var(--p-grey-900);
+    color: var(--o-white);
 }

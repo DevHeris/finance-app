@@ -27,7 +27,7 @@ mat-nav-list {
 }
 
 .active {
-    background-color: var(--white);
+    background-color: var(--o-white);
     border-left: 4px solid var(--green);
 }
 
