@@ -14,7 +14,13 @@ mat-sidenav-container {
 }
 
 mat-sidenav-content {
-    margin-left: 5em;
+    margin-left: 7%;
+}
+
+@media (max-width: 1024px) {
+    mat-sidenav-content {
+        margin-left: 0;
+    }
 }
 
 mat-sidenav {
