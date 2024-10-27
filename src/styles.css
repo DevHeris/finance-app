@@ -1,22 +1,42 @@
 html,
 body {
     height: 100%;
-}
-
-body {
     margin: 0;
-    font-family: var(--font-family-sans) !important;
 }
 
-/* Override Angular Material's Roboto font with Public Sans */
-
-/* still not overriding */
-::ng-deep [class^="mat-"],
-[class*=" mat-"] {
-    font-family: 'Public Sans', sans-serif !important;
+body,
+* {
+    font-family: var(--font-family-sans);
 }
 
 :root {
+    /* Primary Palette (Neutral tones) */
+    --p-beige-500: #98908B;
+    --p-beige-100: #F8F4F0;
+    --p-grey-900: #201F24;
+    --p-grey-500: #696868;
+    --p-grey-300: #B3B3B3;
+    --p-grey-100: #F2F2F2;
+
+    /* Secondary Palette (Brand/Accent colors) */
+    --s-green: #277C78;
+    --s-yellow: #F2CDAC;
+    --s-cyan: #82C9D7;
+    --s-navy: #626070;
+    --s-red: #C94736;
+    --s-purple: #826CB0;
+
+    /* Other/Utility Palette (Theme or Special-use Colors) */
+    --o-purple: #AF81BA;
+    --o-turquoise: #597C7C;
+    --o-brown: #93674F;
+    --o-magenta: #934F6F;
+    --o-blue: #3F82B2;
+    --o-navy-grey: #97A0AC;
+    --o-army-green: #7F9161;
+    --o-gold: #CAB361;
+    --o-orange: #BE6C49;
+    --o-white: #ffff;
     /* Neutrals */
     --grey-900: #201F24;
     --grey-500: #696868;
@@ -24,46 +44,20 @@ body {
     --grey-100: #F2F2F2;
 
     /* Background or inputs */
-    --beige-100: #f8f8f8;
-    /* Off-white background */
+    --beige-500: '#98908B';
+    --beige-100: '#F8F4F0',
 
-    /* Primary Colors */
-    --blue: #3f82b2;
-    /* Primary action color */
+        --blue: #3f82b2;
     --navy: #2c3e50;
-    /* Dark background alternative */
     --navy-grey: #97a0ac;
-    /* Secondary text */
 
-    /* Accent Colors */
     --orange: #f5a623;
-    /* Bright accent (buttons or highlights) */
     --gold: #cab361;
-    /* Optional for financial insights */
 
-    /* State Colors */
     --green: #277C78;
-    /* Success */
     --red: #e74c3c;
-    /* Errors or warnings */
     --yellow: #f2cdac;
-    /* Alerts or mild warnings */
     --cyan: #82c9d7;
-    /* Info or secondary interactions */
-
-    /* Additional Colors */
-    --purple: #9b59b6;
-    --magenta: #e84393;
-    --turquoise: #56c1c1;
-
-    --primary-color: var(--blue);
-    --accent-color: var(--orange);
-    --warn-color: var(--red);
-
-    --info-color: var(--cyan);
-    --success-color: var(--green);
-    --warning-color: var(--yellow);
-    --error-color: var(--red);
 
     --font-family-sans: 'Public Sans', sans-serif;
     --font-size-preset-1: 2rem;

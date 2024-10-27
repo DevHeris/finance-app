@@ -8,10 +8,6 @@
     grid-template-columns: 1fr 2fr;
 }
 
-::ng-deep .mat-stepper-horizontal,
-.mat-stepper-vertical {
-    font-family: var(--font-family-sans) !important;
-}
 
 /* Logo Section */
 .logo-container {
@@ -84,7 +80,7 @@ mat-stepper {
     text-align: center;
     margin-top: 1rem;
     z-index: 2;
-    color: white;
+    color: var(--white);
     font-weight: bold;
 }
 

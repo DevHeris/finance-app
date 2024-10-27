@@ -10,7 +10,7 @@
 }
 
 mat-sidenav-container {
-    background-color: white;
+    background-color: var(--white);
 }
 
 mat-sidenav-content {
@@ -89,7 +89,7 @@ mat-sidenav-content {
 
 .custom-bottom-sheet {
     background-color: var(--grey-900);
-    color: white;
+    color: var(--white);
     height: auto;
     border-radius: 16px 16px 0 0;
     padding: 1em;
