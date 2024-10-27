@@ -32,6 +32,11 @@
     background-color: var(--o-white);
     border-radius: .6em;
     padding: 1.7em 1.2em;
+    font-weight: bold;
+}
+
+.grid-1-item span:last-child {
+    font-size: 2em;
 }
 
 .grid-1-item:first-child {
