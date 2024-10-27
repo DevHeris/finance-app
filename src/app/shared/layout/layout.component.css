@@ -70,7 +70,7 @@ mat-drawer {
 }
 
 .bottom-sheet {
-    height: auto;
+    height: 2.9em;
     position: fixed;
     bottom: 0;
     left: 0;

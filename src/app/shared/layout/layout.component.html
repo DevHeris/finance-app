@@ -1,6 +1,6 @@
 <div class="layout-container" [class.example-is-mobile]="mobileQuery.matches">
   <!-- Desktop sidenav -->
-  @if (!mobileQuery.matches) {
+  @if (!tabletQuery.matches && !mobileQuery.matches) {
     <mat-sidenav-container class="layout-sidenav-container">
       <mat-sidenav
         #snav
@@ -39,10 +39,8 @@
     </mat-sidenav-container>
   } @else {
     <!-- Mobile Drawer -->
-    @if (mobileQuery.matches) {
-      <mat-drawer #drawer mode="push" position="end" class="bottom-sheet" opened="true">
-        <app-nav-list [isSidenavOpen]="isSidenavOpen"></app-nav-list>
-      </mat-drawer>
-    }
+    <mat-drawer #drawer mode="push" position="end" class="bottom-sheet" opened="true">
+      <app-nav-list [isSidenavOpen]="isSidenavOpen"></app-nav-list>
+    </mat-drawer>
   }
 </div>

@@ -6,6 +6,7 @@ mat-nav-list {
 
 ::ng-deep .mat-mdc-nav-list .mat-mdc-list-item {
     border-radius: 0px 10px 10px 0px !important;
+    height: 100%;
 }
 
 .mat-list-item-div {
@@ -16,6 +17,7 @@ mat-nav-list {
 
 .nav-text {
     display: none;
+    color: var(--grey-300);
 }
 
 .nav-text.show {
@@ -45,7 +47,12 @@ span {
     font-family: var(--font-family-sans) !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
+    .nav-text {
+        display: block;
+        font-size: .9em;
+    }
+
     mat-nav-list {
         flex-direction: row;
         padding: 0;
@@ -61,12 +68,34 @@ span {
         border-radius: 10px 10px 0px 0px !important;
     }
 
+    ::ng-deep .mat-mdc-nav-list .mat-mdc-list-item {
+        border-radius: 10px 10px 0px 0px !important;
+    }
+
+    .mat-list-item-div {
+        flex-direction: column;
+        justify-content: center;
+        padding: .5em 0;
+        gap: .5em;
+    }
+
+    ::ng-deep .mdc-list-item.mdc-list-item--with-one-line {
+        height: 100% !important;
+    }
+
+    mat-nav-list {
+        grid-gap: 0;
+    }
+
+}
+
+@media (max-width: 600px) {
     .nav-text {
         display: none;
     }
 
-    .mat-list-item-div {
-        justify-content: center;
+    mat-nav-list {
+        grid-gap: .5em;
     }
 
 }

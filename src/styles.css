@@ -9,6 +9,8 @@ body {
 }
 
 /* Override Angular Material's Roboto font with Public Sans */
+
+/* still not overriding */
 ::ng-deep [class^="mat-"],
 [class*=" mat-"] {
     font-family: 'Public Sans', sans-serif !important;
