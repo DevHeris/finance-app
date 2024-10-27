@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
@@ -16,6 +16,8 @@ import { AuthService } from '../../shared/auth/auth.service';
   ],
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('passwordInput') passwordInput!: ElementRef<HTMLInputElement>;
+
   private _formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
   private breakpointObserver = inject(BreakpointObserver);
@@ -53,5 +55,13 @@ export class LoginComponent implements OnInit {
   toggleVisibility(event: MouseEvent): void {
     this.hide.set(!this.hide());
     event.stopPropagation();
+  }
+
+  onStepChange(event: any) {
+    if (event.selectedIndex === 1) {
+      setTimeout(() => {
+        this.passwordInput.nativeElement.focus();
+      }, 0);
+    }
   }
 }

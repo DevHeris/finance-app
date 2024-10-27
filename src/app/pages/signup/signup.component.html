@@ -13,7 +13,12 @@
         class="background-image"
       />
     </div>
-    <mat-stepper #stepper class="stepper-container" [orientation]="stepperOrientation">
+    <mat-stepper
+      #stepper
+      class="stepper-container"
+      [orientation]="stepperOrientation"
+      (selectionChange)="onStepChange($event)"
+    >
       <!-- Step 1: User Details -->
       <mat-step [stepControl]="userDetailsFormGroup" label="User Details">
         <p class="signup-text">Signup for your finance account!</p>
@@ -74,6 +79,7 @@
               [type]="hide() ? 'password' : 'text'"
               formControlName="password"
               required
+              #passwordInput
             />
             @if (
               passwordFormGroup.controls["password"].hasError("minlength") &&

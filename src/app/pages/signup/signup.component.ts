@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/auth/auth.service';
@@ -17,6 +17,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   ],
 })
 export class SignupComponent implements OnInit {
+  @ViewChild('passwordInput') passwordInput!: ElementRef<HTMLInputElement>;
+
   private _formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
   private breakpointObserver = inject(BreakpointObserver);
@@ -63,6 +65,14 @@ export class SignupComponent implements OnInit {
       //   const confirmPassword = this.passwordFormGroup.controls.confirmPassword.value!;
 
       this.authService.signup(email, username, password);
+    }
+  }
+
+  onStepChange(event: any) {
+    if (event.selectedIndex === 1) {
+      setTimeout(() => {
+        this.passwordInput.nativeElement.focus();
+      }, 0);
     }
   }
 }
