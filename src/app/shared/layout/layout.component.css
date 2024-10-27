@@ -17,11 +17,6 @@ mat-sidenav-content {
     margin-left: 7%;
 }
 
-@media (max-width: 1024px) {
-    mat-sidenav-content {
-        margin-left: 0;
-    }
-}
 
 mat-sidenav {
     width: 19em;
@@ -82,10 +77,7 @@ span {
 
 mat-sidenav-content {
     overflow: auto;
-    /* I'll check later */
-    /* padding-bottom: 12em; */
 }
-
 
 .custom-bottom-sheet {
     background-color: var(--grey-900);
@@ -109,4 +101,10 @@ mat-sidenav-content {
     padding-bottom: 0 !important;
     min-width: 0 !important;
     max-width: 100% !important;
+}
+
+@media (max-width: 1024px) {
+    mat-sidenav-content {
+        margin-left: 0;
+    }
 }
