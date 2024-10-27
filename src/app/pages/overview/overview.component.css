@@ -37,6 +37,7 @@
 
 .grid-1-item span:last-child {
     font-size: 2em;
+    font-weight: bold;
 }
 
 .grid-1-item:first-child {
