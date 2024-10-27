@@ -81,6 +81,23 @@ mat-stepper {
     font-weight: bold;
 }
 
+.login-container {
+    text-align: center;
+    margin-top: 1rem;
+    z-index: 2;
+    color: white;
+    font-weight: bold;
+}
+
+.login-link {
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
 
 /* Angular Material Overrides */
 ::ng-deep .mat-mdc-form-field-error-wrapper {
