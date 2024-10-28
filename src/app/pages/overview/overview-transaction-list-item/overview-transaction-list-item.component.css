@@ -1,0 +1,13 @@
+.transaction-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    max-height: 6em;
+    padding: 1.2em;
+}
+
+.transaction-item img {
+    border-radius: 50%;
+    display: block;
+    width: 40px;
+    height: 40px;
+}

@@ -22,6 +22,8 @@ mat-sidenav {
     width: 19em;
     height: 100dvh;
     background-color: var(--grey-900);
+    /* Can be changed to have a border radius */
+    border-radius: 0 0;
 }
 
 ::ng-deep mat-sidenav.collapsed {

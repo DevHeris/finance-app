@@ -16,6 +16,7 @@ import { MaterialModule } from './shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NavListComponent } from './shared/nav-list/nav-list.component';
+import { OverviewTransactionListItemComponent } from './pages/overview/overview-transaction-list-item/overview-transaction-list-item.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NavListComponent } from './shared/nav-list/nav-list.component';
     LoginComponent,
     SignupComponent,
     NavListComponent,
+    OverviewTransactionListItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
   providers: [provideAnimationsAsync()],

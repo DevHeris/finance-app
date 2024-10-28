@@ -72,6 +72,16 @@
           <img src="/assets/images/icon-caret-right.svg" alt="icon-caret-right" />
         </span>
       </section>
+      <div class="transactions-content">
+        @for (transaction of displayedTransactions; track transaction.counterpartyName) {
+          <app-overview-transaction-list-item
+            [transaction]="transaction"
+          ></app-overview-transaction-list-item>
+          @if (!$last) {
+            <mat-divider></mat-divider>
+          }
+        }
+      </div>
     </div>
     <div class="grid-2-item recurring-bills">
       <section class="top">

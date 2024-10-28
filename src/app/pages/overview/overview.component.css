@@ -171,6 +171,11 @@
     font-weight: bold;
 }
 
+mat-divider {
+    border-top-color: var(--p-grey-100);
+    margin: 0 1.2em;
+}
+
 @media(max-width:1024px) {
     .grid-2 {
         grid-template-columns: 1fr;
