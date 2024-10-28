@@ -7,7 +7,14 @@
   </div>
   <h4 class="name">{{ transaction()?.counterpartyName }}</h4>
   <div>
-    <span class="amount">{{ transaction()?.amount }}</span>
-    <span class="date">{{ formatDate(transaction()?.date) }}</span>
+    <span
+      class="amount"
+      [ngStyle]="{ color: transaction()?.transactionType === 'income' && 'var(--s-green)' }"
+    >
+      {{ transaction()?.transactionType !== "income" ? "-" : "" }}
+
+      {{ transaction()?.amount | currency }}
+    </span>
+    <span class="date">{{ transaction()?.date | date }}</span>
   </div>
 </div>

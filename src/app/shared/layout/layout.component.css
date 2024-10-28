@@ -110,3 +110,13 @@ mat-sidenav-content {
         margin-left: 0;
     }
 }
+
+@media (max-width: 600px) {
+    .custom-bottom-sheet {
+        padding-top: 0;
+    }
+
+    ::ng-deep mat-bottom-sheet-container {
+        padding-top: 0 !important;
+    }
+}

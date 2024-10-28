@@ -21,10 +21,12 @@
     <div class="grid-2-item pots">
       <section class="top">
         <h3>Pots</h3>
-        <span class="action">
-          <span>See Details</span>
-          <img src="/assets/images/icon-caret-right.svg" alt="icon-caret-right" />
-        </span>
+        <a routerLink="/pots">
+          <span class="action">
+            <span>See Details</span>
+            <img src="/assets/images/icon-caret-right.svg" alt="icon-caret-right" />
+          </span>
+        </a>
       </section>
       <div class="pots-content">
         <div>
@@ -58,19 +60,23 @@
     <div class="grid-2-item budgets">
       <section class="top">
         <h3>Budgets</h3>
-        <span class="action">
-          <span>See Details</span>
-          <img src="/assets/images/icon-caret-right.svg" alt="icon-caret-right" />
-        </span>
+        <a routerLink="/budgets">
+          <span class="action">
+            <span>See Details</span>
+            <img src="/assets/images/icon-caret-right.svg" alt="icon-caret-right" />
+          </span>
+        </a>
       </section>
     </div>
     <div class="grid-2-item transactions">
       <section class="top">
         <h3>Transactions</h3>
-        <span class="action">
-          <span>View All</span>
-          <img src="/assets/images/icon-caret-right.svg" alt="icon-caret-right" />
-        </span>
+        <a routerLink="/transactions">
+          <span class="action">
+            <span>View All</span>
+            <img src="/assets/images/icon-caret-right.svg" alt="icon-caret-right" />
+          </span>
+        </a>
       </section>
       <div class="transactions-content">
         @for (transaction of displayedTransactions; track transaction.counterpartyName) {
@@ -86,10 +92,12 @@
     <div class="grid-2-item recurring-bills">
       <section class="top">
         <h3>Recurring Bills</h3>
-        <span class="action">
-          <span>See Details</span>
-          <img src="/assets/images/icon-caret-right.svg" alt="icon-caret-right" />
-        </span>
+        <a routerLink="/recurring-bills">
+          <span class="action">
+            <span>See Details</span>
+            <img src="/assets/images/icon-caret-right.svg" alt="icon-caret-right" />
+          </span>
+        </a>
       </section>
     </div>
   </div>

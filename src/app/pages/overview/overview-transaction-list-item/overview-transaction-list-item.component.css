@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     max-height: 6em;
-    padding: 1.2em;
+    padding: .5em;
     align-items: center;
     gap: 2em
 }
@@ -17,5 +17,21 @@
 .transaction-item div:last-child {
     display: flex;
     flex-direction: column;
-    gap: .5em
+    gap: .5em;
+    align-items: end;
+}
+
+.date {
+    font-size: .8em;
+    color: var(--p-grey-500);
+}
+
+.amount {
+    font-weight: bold;
+}
+
+@media (max-width:600px) {
+    h4 {
+        font-size: .9em;
+    }
 }
