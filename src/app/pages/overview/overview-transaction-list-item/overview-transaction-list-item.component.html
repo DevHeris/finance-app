@@ -11,7 +11,7 @@
       class="amount"
       [ngStyle]="{ color: transaction()?.transactionType === 'income' && 'var(--s-green)' }"
     >
-      {{ transaction()?.transactionType !== "income" ? "-" : "" }}
+      {{ transaction()?.transactionType !== "income" ? "-" : "+" }}
 
       {{ transaction()?.amount | currency }}
     </span>

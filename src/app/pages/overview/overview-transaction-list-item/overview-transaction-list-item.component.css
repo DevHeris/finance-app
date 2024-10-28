@@ -34,4 +34,12 @@
     h4 {
         font-size: .9em;
     }
+
+    .date {
+        font-size: .65em;
+    }
+
+    .amount {
+        font-size: .8em;
+    }
 }
