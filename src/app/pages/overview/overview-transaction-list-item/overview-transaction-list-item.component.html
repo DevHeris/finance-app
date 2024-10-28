@@ -5,4 +5,9 @@
       alt="{{ transaction()?.counterpartyName }}"
     />
   </div>
+  <h4 class="name">{{ transaction()?.counterpartyName }}</h4>
+  <div>
+    <span class="amount">{{ transaction()?.amount }}</span>
+    <span class="date">{{ formatDate(transaction()?.date) }}</span>
+  </div>
 </div>

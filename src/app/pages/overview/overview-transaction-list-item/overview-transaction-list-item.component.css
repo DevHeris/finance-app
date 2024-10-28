@@ -3,6 +3,8 @@
     grid-template-columns: auto 1fr auto;
     max-height: 6em;
     padding: 1.2em;
+    align-items: center;
+    gap: 2em
 }
 
 .transaction-item img {
@@ -10,4 +12,10 @@
     display: block;
     width: 40px;
     height: 40px;
+}
+
+.transaction-item div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: .5em
 }
