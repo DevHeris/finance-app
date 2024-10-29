@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .wrapper {
     padding: 2em;
     background-color: var(--p-beige-100);
@@ -16,7 +20,6 @@
 }
 
 .title-text {
-    font-weight: bold;
     font-size: 2.2em;
 }
 
@@ -33,12 +36,11 @@
     gap: 1em;
     background-color: var(--o-white);
     border-radius: .7em;
-    padding: 1.7em 1.2em;
+    padding: 1.2em;
 }
 
 .grid-1-item span:last-child {
     font-size: 2em;
-    font-weight: bold;
 }
 
 .grid-1-item:not(:first-child) span:first-child {
@@ -103,8 +105,6 @@
     align-items: center;
 }
 
-
-
 .pots-content div:first-child {
     grid-column: 1/2;
     background-color: var(--p-beige-100);
@@ -135,7 +135,6 @@
 
 .pots-content section p {
     font-size: 2em;
-    font-weight: bold;
 }
 
 .mini-pot {
@@ -167,13 +166,50 @@
     color: var(--p-grey-500);
 }
 
-.mini-pot span:last-child {
-    font-weight: bold;
-}
-
 mat-divider {
     border-top-color: var(--p-grey-100);
     margin: 0 .8em;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover .action span {
+    color: var(--s-green);
+}
+
+
+.recurring-bills-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.recurring-bills-content p {
+    background-color: var(--p-beige-100);
+    padding: 1.5em;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .88em;
+}
+
+.recurring-bills-content p span:first-child {
+    color: var(--p-grey-500);
+}
+
+.recurring-bills-content p:first-child {
+    border-left: 3px solid var(--s-green);
+}
+
+.recurring-bills-content p:nth-child(2) {
+    border-left: 3px solid var(--s-yellow);
+}
+
+.recurring-bills-content p:last-child {
+    border-left: 3px solid var(--s-cyan);
 }
 
 @media(max-width:1024px) {
@@ -210,7 +246,7 @@ mat-divider {
 
 @media(max-width:600px) {
     .wrapper {
-        padding: .5em .5em 6em .5em;
+        padding: 1em .5em 0 .5em;
     }
 
     .pots-content {
@@ -232,12 +268,4 @@ mat-divider {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr;
     }
-}
-
-a {
-    text-decoration: none;
-}
-
-a:hover .action span {
-    color: var(--s-green);
 }

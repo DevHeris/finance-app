@@ -13,9 +13,9 @@ export class LayoutComponent implements OnDestroy, OnInit {
   isSidenavOpen = true;
   isRotated = false;
 
-  // Inject dependencies
   private media = inject(MediaMatcher);
   private cdr = inject(ChangeDetectorRef);
+  private bottomSheet = inject(MatBottomSheet);
 
   mobileQuery: MediaQueryList;
   tabletQuery: MediaQueryList;
@@ -41,7 +41,6 @@ export class LayoutComponent implements OnDestroy, OnInit {
     }
   }
 
-  private bottomSheet = inject(MatBottomSheet);
   openBottomSheet(): void {
     this.bottomSheet.open(NavListComponent, {
       panelClass: 'custom-bottom-sheet',

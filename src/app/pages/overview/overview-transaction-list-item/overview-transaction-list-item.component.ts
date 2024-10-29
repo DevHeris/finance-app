@@ -15,6 +15,5 @@ export class OverviewTransactionListItemComponent implements OnInit {
   ngOnInit(): void {
     this.transactionType =
       this.transaction()?.amount.toString().charAt(0) === '-' ? 'expense' : 'income';
-    console.log(this.transactionType);
   }
 }
