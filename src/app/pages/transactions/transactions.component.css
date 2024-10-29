@@ -3,3 +3,11 @@
     padding: 1.5em;
     border-radius: 1em;
 }
+
+@media screen and (max-width:600px) {
+    .transactions-wrapper {
+        padding-inline: 1em;
+        padding-top: 1em;
+    }
+
+}
