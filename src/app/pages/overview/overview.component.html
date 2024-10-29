@@ -79,7 +79,7 @@
         </a>
       </section>
       <div class="transactions-content">
-        @for (transaction of displayedTransactions; track transaction.name) {
+        @for (transaction of displayedTransactions; track transaction) {
           <app-overview-transaction-list-item
             [transaction]="transaction"
           ></app-overview-transaction-list-item>

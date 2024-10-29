@@ -280,6 +280,10 @@ body,
     font-size: 2.2em;
 }
 
+.mat-bottom-sheet-container {
+    background: var(--p-grey-900) !important;
+}
+
 @media(max-width:600px) {
     .wrapper {
         padding: 1em .5em 0 .5em;

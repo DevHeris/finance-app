@@ -42,7 +42,13 @@
     @if (isSortOpen || isCategoryOpen) {
       <ul class="mobile-drop-down" [ngStyle]="dropdownStyle">
         @for (option of isSortOpen ? sortByOptions : categoryOptions; track option) {
-          <li (click)="handleSelection(option)">
+          <li
+            (click)="handleSelection(option)"
+            [class.selected]="
+              (isSortOpen && option === sortOptionSelected) ||
+              (!isSortOpen && option === categorySelected)
+            "
+          >
             {{ option }}
           </li>
         }

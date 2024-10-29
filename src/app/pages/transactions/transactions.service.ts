@@ -13,6 +13,11 @@ export class TransactionsService {
     return this.transactions.filter((_, index) => index < 5);
   }
 
+  getTransactions(): Transaction[] {
+    // ALL TRANSACTIONS
+    return this.transactions.slice();
+  }
+
   constructor() {
     this.transactions = initialTransactions;
     this.recurringTransactions = initialRecurringTransactions;

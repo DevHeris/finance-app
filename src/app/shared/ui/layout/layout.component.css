@@ -82,7 +82,7 @@ mat-sidenav-content {
 }
 
 .custom-bottom-sheet {
-    background-color: var(--grey-900);
+    background: var(--grey-900);
     color: var(--o-white);
     height: auto;
     border-radius: 16px 16px 0 0;

@@ -108,7 +108,7 @@ div.mat-mdc-select-panel .mat-mdc-option:hover {
 /* Dropdown Menu */
 .mobile-drop-down {
     position: absolute;
-    background-color: white;
+    background-color: var(--o-white);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 0.5em;
     padding: 0.5em;
@@ -125,8 +125,13 @@ div.mat-mdc-select-panel .mat-mdc-option:hover {
     transition: background-color 0.2s;
 }
 
+.mobile-drop-down li.selected {
+    background-color: var(--p-grey-900);
+    color: var(--o-white);
+}
+
 .mobile-drop-down li:hover {
-    background-color: #e9ecef;
+    background-color: var(--p-grey-300);
 }
 
 .mobile-only {

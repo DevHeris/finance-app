@@ -18,6 +18,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { NavListComponent } from './shared/ui/nav-list/nav-list.component';
 import { OverviewTransactionListItemComponent } from './pages/overview/overview-transaction-list-item/overview-transaction-list-item.component';
 import { TransactionsToolbarComponent } from './shared/ui/transactions-toolbar/transactions-toolbar.component';
+import { TransactionListItemComponent } from './shared/ui/transaction-list-item/transaction-list-item.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { TransactionsToolbarComponent } from './shared/ui/transactions-toolbar/t
     NavListComponent,
     OverviewTransactionListItemComponent,
     TransactionsToolbarComponent,
+    TransactionListItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
   providers: [provideAnimationsAsync(), Title],

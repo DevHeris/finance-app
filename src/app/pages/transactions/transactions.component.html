@@ -7,5 +7,23 @@
     <div class="toolbar">
       <app-transactions-toolbar></app-transactions-toolbar>
     </div>
+    <div class="table-header flex flex-row items-center">
+      <p>Recipient / Sender</p>
+      <p>Category</p>
+      <p>Transaction Date</p>
+      <p>Amount</p>
+    </div>
+    <ul>
+      @for (transaction of transactions; track transaction) {
+        @if ($first) {
+          <mat-divider></mat-divider>
+        }
+        <app-transaction-list-item [transaction]="transaction"></app-transaction-list-item>
+
+        @if (!$last) {
+          <mat-divider></mat-divider>
+        }
+      }
+    </ul>
   </div>
 </div>
