@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-transactions-toolbar',
   templateUrl: './transactions-toolbar.component.html',
   styleUrl: './transactions-toolbar.component.css',
+  encapsulation: ViewEncapsulation.None,
 })
 export class TransactionsToolbarComponent {
   categorySelected: string = 'All Transactions';

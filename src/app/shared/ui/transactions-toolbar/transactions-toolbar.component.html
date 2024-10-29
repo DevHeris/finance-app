@@ -1,14 +1,13 @@
-<div class="box">
+<div class="toolbar-box items-center">
   <div class="search-filter">
     <input type="search" name="search-input" id="search-input" placeholder="Search transactions" />
     <mat-icon matSuffix>search</mat-icon>
   </div>
-  <div class="select-filters flex flex-row">
+  <div class="select-filters flex flex-row items-center">
     <div class="sort-by flex items-center">
       <span>Sort by</span>
       <div>
         <mat-form-field>
-          <mat-label>Select an option</mat-label>
           <mat-select [(value)]="sortOptionSelected">
             @for (option of sortByOptions; track option) {
               <mat-option [value]="option">{{ option }}</mat-option>
@@ -21,7 +20,6 @@
       <span>Category</span>
       <div>
         <mat-form-field>
-          <mat-label>Select a category</mat-label>
           <mat-select [(value)]="categorySelected">
             @for (category of categoryOptions; track category) {
               <mat-option [value]="category">{{ category }}</mat-option>

@@ -1,40 +1,96 @@
-.box {
+.toolbar-box {
     display: grid;
-    grid-template-columns: 2fr .5fr;
+    grid-template-columns: 2fr 1fr;
 }
 
-.select-filters {
+.toolbar-box .search-filter {
+    position: relative;
+    width: 20em;
+    grid-column: 1/3;
+}
+
+.toolbar-box .select-filters {
     gap: 1.5em;
+    grid-column: 3/4;
 }
 
-.sort-by,
-.category {
+.toolbar-box .sort-by,
+.toolbar-box .category {
     gap: 1em;
 }
 
-.search-filter {
-    position: relative;
-    min-width: 20em;
+.sort-by>span,
+.category>span {
+    font-size: .9em;
+    color: var(--p-beige-500)
 }
 
+
 .search-filter input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1em;
+    box-sizing: border-toolbar-box;
+    padding: 1.5em;
     border: var(--border);
     border-radius: .5em;
+    width: 100%;
+
 }
 
 .search-filter input:focus {
-    border: 2px solid var(--green);
-    outline: none;
+    border: none;
+    outline: 2px solid var(--green);
 }
 
 .search-filter mat-icon {
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: .5em;
+    top: 52%;
     transform: translateY(-50%);
     cursor: pointer;
     color: #757575;
+}
+
+.toolbar-box .mat-mdc-form-field {
+    margin-top: 1.15em;
+}
+
+.toolbar-box .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: transparent;
+    border: var(--border);
+    border-radius: .5em;
+}
+
+.toolbar-box .mat-mdc-form-field-infix {
+    padding-bottom: 0;
+}
+
+.toolbar-box .mat-mdc-form-field.mat-focused .mat-mdc-select-arrow {
+    color: var(--p-grey-900);
+}
+
+.toolbar-box .mat-mdc-select-min-line {
+    color: var(--p-grey-900);
+    font-size: .9em;
+}
+
+.toolbar-box .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+    border-bottom-color: transparent;
+    border-bottom-width: 0
+}
+
+div.mat-mdc-select-panel {
+    background-color: var(--o-white) !important;
+    margin: .5em;
+}
+
+.mdc-list-item .mdc-list-item__primary-text,
+.mdc-list-item:hover .mdc-list-item__primary-text {
+    color: var(--p-grey-900);
+}
+
+div.mat-mdc-select-panel .mat-mdc-option:hover {
+    background-color: var(--p-grey-300);
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple) {
+    background-color: var(--p-grey-900) !important;
 }

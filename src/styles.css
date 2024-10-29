@@ -191,7 +191,7 @@ body,
     flex-direction: column;
 }
 
-.justify-center {
+-g .justify-center {
     justify-content: center;
 }
 
