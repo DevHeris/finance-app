@@ -8,14 +8,14 @@ import { TransactionsComponent } from './pages/transactions/transactions.compone
 import { BudgetsComponent } from './pages/budgets/budgets.component';
 import { PotsComponent } from './pages/pots/pots.component';
 import { RecurringBillsComponent } from './pages/recurring-bills/recurring-bills.component';
-import { LayoutComponent } from './shared/layout/layout.component';
+import { LayoutComponent } from './shared/ui/layout/layout.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
-import { NavListComponent } from './shared/nav-list/nav-list.component';
+import { NavListComponent } from './shared/ui/nav-list/nav-list.component';
 import { OverviewTransactionListItemComponent } from './pages/overview/overview-transaction-list-item/overview-transaction-list-item.component';
 
 @NgModule({

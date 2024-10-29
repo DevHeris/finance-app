@@ -1,17 +1,11 @@
 <div class="transaction-item">
   <div>
-    <img
-      src="{{ transaction()?.counterpartyAvatarUrl }}"
-      alt="{{ transaction()?.counterpartyName }}"
-    />
+    <img src="{{ transaction()?.avatar }}" alt="{{ transaction()?.name }}" />
   </div>
-  <h4 class="name">{{ transaction()?.counterpartyName }}</h4>
+  <h4 class="name">{{ transaction()?.name }}</h4>
   <div>
-    <span
-      class="amount"
-      [ngStyle]="{ color: transaction()?.transactionType === 'income' && 'var(--s-green)' }"
-    >
-      {{ transaction()?.transactionType !== "income" ? "-" : "+" }}
+    <span class="amount" [ngStyle]="{ color: transactionType === 'income' && 'var(--s-green)' }">
+      {{ transactionType !== "income" ? "" : "+" }}
 
       {{ transaction()?.amount | currency }}
     </span>

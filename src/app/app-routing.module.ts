@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { LayoutComponent } from './shared/layout/layout.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { BudgetsComponent } from './pages/budgets/budgets.component';
@@ -10,6 +9,7 @@ import { PotsComponent } from './pages/pots/pots.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { authGuard } from './shared/auth/auth.guard';
 import { SignupComponent } from './pages/signup/signup.component';
+import { LayoutComponent } from './shared/ui/layout/layout.component';
 
 const routes: Routes = [
   {

@@ -6,9 +6,16 @@ import { Transaction } from '../../shared/models/transaction-model';
 })
 export class TransactionsService {
   transactions: Transaction[];
+  recurringTransactions: Transaction[];
+
+  getOverviewPageDisplayedTransactions(): Transaction[] {
+    // DISPLAY THE FIRST 5 TRANSACTIONS
+    return this.transactions.filter((_, index) => index < 5);
+  }
 
   constructor() {
     this.transactions = initialTransactions;
+    this.recurringTransactions = initialRecurringTransactions;
   }
 }
 
@@ -406,3 +413,7 @@ const initialTransactions = [
     recurring: false,
   },
 ];
+
+const initialRecurringTransactions = initialTransactions.filter(
+  (trans) => trans.recurring === true,
+);
