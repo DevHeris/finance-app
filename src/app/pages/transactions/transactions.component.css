@@ -14,7 +14,7 @@
 }
 
 .table-header p:first-child {
-    flex-basis: 50%;
+    flex-basis: 49%;
 }
 
 .table-header p:nth-child(2) {
@@ -22,11 +22,12 @@
 }
 
 .table-header p:nth-child(3) {
-    flex-basis: 25%;
+    flex-basis: 26%;
 }
 
 .table-header p:last-child {
     flex-basis: 10%;
+    text-align: right;
 }
 
 mat-divider {
@@ -35,7 +36,7 @@ mat-divider {
 }
 
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:900px) {
     .transactions-wrapper {
         padding-inline: 1em;
         padding-top: 1em;
