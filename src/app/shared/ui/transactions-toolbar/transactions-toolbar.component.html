@@ -3,7 +3,7 @@
     <input type="search" name="search-input" id="search-input" placeholder="Search transactions" />
     <mat-icon matSuffix>search</mat-icon>
   </div>
-  <div class="select-filters flex flex-row items-center">
+  <div class="select-filters desktop-only flex flex-row items-center">
     <div class="sort-by flex items-center">
       <span>Sort by</span>
       <div>
@@ -28,5 +28,25 @@
         </mat-form-field>
       </div>
     </div>
+  </div>
+  <!-- Mobile Icons and Dropdown -->
+  <div class="mobile-only">
+    <span #sortIcon (click)="toggleDropdown('sort')">
+      <img src="/assets/images/icon-sort-mobile.svg" alt="sort icon" />
+    </span>
+    <span #categoryIcon (click)="toggleDropdown('category')">
+      <img src="/assets/images/icon-filter-mobile.svg" alt="filter icon" />
+    </span>
+
+    <!-- Mobile Dropdown -->
+    @if (isSortOpen || isCategoryOpen) {
+      <ul class="mobile-drop-down" [ngStyle]="dropdownStyle">
+        @for (option of isSortOpen ? sortByOptions : categoryOptions; track option) {
+          <li (click)="handleSelection(option)">
+            {{ option }}
+          </li>
+        }
+      </ul>
+    }
   </div>
 </div>
