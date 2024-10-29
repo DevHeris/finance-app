@@ -1,12 +1,14 @@
 html,
 body {
     height: 100%;
-    margin: 0;
 }
 
 body,
 * {
     font-family: var(--font-family-sans);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 :root {
@@ -84,4 +86,204 @@ body,
     --spacing-50: 4px;
 
     --box-shadow-custom: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* UTILITY CLASSES */
+/* Spacing (Margin & Padding) */
+.m-0 {
+    margin: 0px;
+}
+
+.m-1 {
+    margin: 0.25rem;
+}
+
+.m-2 {
+    margin: 0.5rem;
+}
+
+.m-3 {
+    margin: 0.75rem;
+}
+
+.m-4 {
+    margin: 1rem;
+}
+
+.m-5 {
+    margin: 1.25rem;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+.ml-1 {
+    margin-left: 0.25rem;
+}
+
+.mr-1 {
+    margin-right: 0.25rem;
+}
+
+.p-0 {
+    padding: 0px;
+}
+
+.p-1 {
+    padding: 0.25rem;
+}
+
+.p-2 {
+    padding: 0.5rem;
+}
+
+.p-3 {
+    padding: 0.75rem;
+}
+
+.p-4 {
+    padding: 1rem;
+}
+
+.pt-1 {
+    padding-top: 0.25rem;
+}
+
+.pb-1 {
+    padding-bottom: 0.25rem;
+}
+
+/* Display & Flexbox */
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.inline {
+    display: inline;
+}
+
+.flex {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.items-center {
+    align-items: center;
+}
+
+/* Sizing (Width & Height) */
+.w-0 {
+    width: 0px;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-screen {
+    height: 100vh;
+}
+
+/* Text & Fonts */
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Positioning */
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.top-0 {
+    top: 0px;
+}
+
+.left-0 {
+    left: 0px;
+}
+
+/* Opacity & Shadows */
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Cursor */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Routes pages wrapper */
+.wrapper {
+    padding: 2em;
+    background-color: var(--p-beige-100);
+    height: 100vh;
+    overflow: scroll;
+    color: var(--p-grey-900);
+    display: flex;
+    gap: 1.5em;
+    flex-direction: column;
+}
+
+.title-text {
+    font-size: 2.2em;
+}
+
+@media(max-width:600px) {
+    .wrapper {
+        padding: 1em .5em 0 .5em;
+    }
+}
+
+@media(max-width:1024px) {
+    .wrapper {
+        padding: 1em 1em 6em 1em;
+    }
 }

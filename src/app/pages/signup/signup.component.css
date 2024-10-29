@@ -74,6 +74,8 @@ mat-stepper {
 .signup-text {
     color: var(--cyan);
     font-weight: bold;
+    padding-bottom: 1em;
+
 }
 
 .login-container {

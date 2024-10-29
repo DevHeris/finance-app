@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { Transaction } from '../../shared/models/transaction-model';
 import { TransactionsService } from '../transactions/transactions.service';
 

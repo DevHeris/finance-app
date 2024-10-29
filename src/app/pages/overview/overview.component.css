@@ -1,28 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.wrapper {
-    padding: 2em;
-    background-color: var(--p-beige-100);
-    height: 100vh;
-    overflow: scroll;
-    color: var(--p-grey-900);
-    display: flex;
-    gap: 1.5em;
-    flex-direction: column;
-}
-
-.title-text {
-    font-size: 2.2em;
-}
-
 .grid-1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -213,10 +188,6 @@ a:hover .action span {
 }
 
 @media(max-width:1024px) {
-    .wrapper {
-        padding: 1em 1em 6em 1em;
-    }
-
     .grid-2 {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto auto;
@@ -245,9 +216,7 @@ a:hover .action span {
 }
 
 @media(max-width:600px) {
-    .wrapper {
-        padding: 1em .5em 0 .5em;
-    }
+
 
     .pots-content {
         grid-template-columns: 1fr;
