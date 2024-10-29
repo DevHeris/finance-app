@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { AuthService } from '../../shared/auth/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,9 @@ import { AuthService } from '../../shared/auth/auth.service';
   ],
 })
 export class LoginComponent implements OnInit {
+  title = 'Finance | Login';
+  private titleService = inject(Title);
+
   @ViewChild('passwordInput') passwordInput!: ElementRef<HTMLInputElement>;
 
   private _formBuilder = inject(FormBuilder);
@@ -35,6 +39,8 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.titleService.setTitle(this.title);
+
     this.breakpointObserver.observe(Breakpoints.Handset).subscribe((result) => {
       this.stepperOrientation = result.matches ? 'vertical' : 'horizontal';
     });

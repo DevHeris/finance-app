@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/auth/auth.service';
 import { confirmPasswordValidator } from '../../shared/validators/confirm-password';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signup',
@@ -17,11 +18,14 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   ],
 })
 export class SignupComponent implements OnInit {
+  title = 'Finance | Signup';
+
   @ViewChild('passwordInput') passwordInput!: ElementRef<HTMLInputElement>;
 
   private _formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
   private breakpointObserver = inject(BreakpointObserver);
+  private titleService = inject(Title);
 
   isSigningUp: boolean = false;
   hide = signal(true);
@@ -41,6 +45,7 @@ export class SignupComponent implements OnInit {
   );
 
   ngOnInit(): void {
+    this.titleService.setTitle(this.title);
     this.breakpointObserver.observe(Breakpoints.Handset).subscribe((result) => {
       this.stepperOrientation = result.matches ? 'vertical' : 'horizontal';
     });

@@ -86,6 +86,10 @@ body,
     --spacing-50: 4px;
 
     --box-shadow-custom: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
+    /* used this border  */
+    --tw-border-opacity: 1;
+    --border: 1px solid rgb(152 144 139 / var(--tw-border-opacity))
 }
 
 /* UTILITY CLASSES */

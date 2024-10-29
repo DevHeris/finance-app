@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NavListComponent } from './shared/ui/nav-list/nav-list.component';
 import { OverviewTransactionListItemComponent } from './pages/overview/overview-transaction-list-item/overview-transaction-list-item.component';
+import { TransactionsToolbarComponent } from './shared/ui/transactions-toolbar/transactions-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,10 @@ import { OverviewTransactionListItemComponent } from './pages/overview/overview-
     SignupComponent,
     NavListComponent,
     OverviewTransactionListItemComponent,
+    TransactionsToolbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
-  providers: [provideAnimationsAsync()],
+  providers: [provideAnimationsAsync(), Title],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

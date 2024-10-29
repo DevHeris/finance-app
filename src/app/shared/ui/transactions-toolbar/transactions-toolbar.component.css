@@ -1,0 +1,26 @@
+.search-box {
+    position: relative;
+    max-width: 350px;
+}
+
+.search-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    border: var(--border);
+    border-radius: .5em;
+}
+
+.search-box input:focus {
+    border: 2px solid var(--green);
+    outline: none;
+}
+
+.search-box mat-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #757575;
+}
