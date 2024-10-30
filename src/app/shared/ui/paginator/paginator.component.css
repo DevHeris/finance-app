@@ -1,3 +1,10 @@
+mat-paginator {
+    position: sticky;
+    bottom: 20%;
+    left: 0;
+    right: 0;
+}
+
 .mat-mdc-paginator {
     background-color: var(--p-grey-900) !important;
     border-radius: .5em;
