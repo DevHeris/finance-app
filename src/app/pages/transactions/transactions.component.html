@@ -15,20 +15,22 @@
     </div>
     <ul>
       @if (!loading) {
-        @for (transaction of displayedTransactions; track transaction) {
-          @if ($first) {
-            <mat-divider></mat-divider>
-          }
-          <app-transaction-list-item [transaction]="transaction"></app-transaction-list-item>
+        @if (empty) {
+          <h2>No Transaction found</h2>
+        } @else {
+          @for (transaction of displayedTransactions; track transaction) {
+            @if ($first) {
+              <mat-divider></mat-divider>
+            }
+            <app-transaction-list-item [transaction]="transaction"></app-transaction-list-item>
 
-          @if (!$last) {
-            <mat-divider></mat-divider>
+            @if (!$last) {
+              <mat-divider></mat-divider>
+            }
           }
         }
       } @else {
         <app-css-spinner></app-css-spinner>
-        <!-- <div class="spinner-div flex items-center">
-        </div> -->
       }
     </ul>
   </div>

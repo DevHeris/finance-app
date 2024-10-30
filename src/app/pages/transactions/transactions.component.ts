@@ -13,6 +13,8 @@ export class TransactionsComponent implements OnInit {
   loading: boolean = false;
   results: Transaction[] = [];
 
+  empty: boolean = false;
+
   private transactionsService = inject(TransactionsService);
 
   displayedTransactions: Transaction[] = [];
@@ -21,6 +23,7 @@ export class TransactionsComponent implements OnInit {
     this.transactionsService.pageUpdate.subscribe({
       next: (transactions: Transaction[]) => {
         this.displayedTransactions = transactions;
+        if (this.displayedTransactions.length === 0) this.empty = true;
       },
     });
     this.transactionsService.SearchResults.subscribe({
@@ -31,7 +34,6 @@ export class TransactionsComponent implements OnInit {
     this.transactionsService.loadingSearchResults.subscribe({
       next: (status: boolean) => {
         this.loading = status;
-        console.log(this.loading);
       },
     });
   }
