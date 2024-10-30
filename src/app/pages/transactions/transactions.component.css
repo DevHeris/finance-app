@@ -36,6 +36,7 @@ mat-divider {
 }
 
 
+
 @media screen and (max-width:1024px) {
     .transactions-wrapper {
         padding-inline: 1em;

@@ -1,4 +1,12 @@
-import { Component, inject, OnInit, output, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  numberAttribute,
+  OnInit,
+  output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { TransactionsService } from '../../../pages/transactions/transactions.service';
 import { Transaction } from '../../models/transaction-model';
 import { PageEvent } from '@angular/material/paginator';
@@ -13,17 +21,30 @@ export class PaginatorComponent implements OnInit {
   private transactionsService = inject(TransactionsService);
   transactions: Transaction[] = [];
   totalTransactions: number = 0;
-  pageSize: number = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 50];
-  pageIndex: number = 0;
+
+  @Input({ transform: numberAttribute }) pageIndex!: number;
+  @Input({ transform: numberAttribute }) pageSize!: number;
 
   currentPageTransactions: Transaction[] = [];
 
   ngOnInit(): void {
-    this.totalTransactions = this.transactionsService.getTransactions().length;
-    this.transactions = this.transactionsService.getTransactions();
-    this.pageSizeOptions = this.pageSizeOptions.filter((size) => size <= this.totalTransactions);
+    this.pageSize = 10;
+    this.pageIndex = 0;
+
+    this.transactionsService.SearchResults.subscribe({
+      next: (results: Transaction[]) => {
+        this.updatePageDetails(results);
+        this.updateItems();
+      },
+    });
+    this.updatePageDetails(this.transactionsService.getTransactions('all'));
     this.updateItems();
+  }
+
+  updatePageDetails(transactions: Array<Transaction>) {
+    this.transactions = transactions;
+    this.totalTransactions = this.transactions.length;
+    this.pageIndex = 0;
   }
 
   updateItems() {
@@ -34,7 +55,6 @@ export class PaginatorComponent implements OnInit {
 
   onPageChange(event: PageEvent) {
     this.pageIndex = event.pageIndex;
-    this.pageSize = event.pageSize;
     this.updateItems();
   }
 }

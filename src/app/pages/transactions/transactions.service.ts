@@ -8,26 +8,23 @@ export class TransactionsService {
   transactions: Transaction[];
   recurringTransactions: Transaction[];
   displayedTransactions: Transaction[] = [];
+
   pageUpdate = new EventEmitter<Transaction[]>();
+  loadingSearchResults: EventEmitter<boolean> = new EventEmitter<boolean>();
+  SearchResults: EventEmitter<Transaction[]> = new EventEmitter<Transaction[]>();
+
+  constructor() {
+    this.transactions = initialTransactions;
+    this.recurringTransactions = initialRecurringTransactions;
+  }
 
   getOverviewPageDisplayedTransactions(): Transaction[] {
     // DISPLAY THE FIRST 5 TRANSACTIONS
     return this.transactions.filter((_, index) => index < 5);
   }
 
-  getTransactions(): Transaction[] {
-    // ALL TRANSACTIONS
-    return this.transactions.slice();
-  }
-
-  getCurrentlyDisplayedTransactions(): Transaction[] {
-    // TRANSACTIONS PER PAGE IN THE tRANSACTION ROUTE
-    return this.displayedTransactions;
-  }
-
-  constructor() {
-    this.transactions = initialTransactions;
-    this.recurringTransactions = initialRecurringTransactions;
+  getTransactions(type?: 'all' | 'displayed'): Transaction[] {
+    return type === 'displayed' ? this.displayedTransactions.slice() : this.transactions.slice();
   }
 }
 

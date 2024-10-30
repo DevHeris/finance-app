@@ -20,6 +20,7 @@ import { OverviewTransactionListItemComponent } from './pages/overview/overview-
 import { TransactionsToolbarComponent } from './shared/ui/transactions-toolbar/transactions-toolbar.component';
 import { TransactionListItemComponent } from './shared/ui/transaction-list-item/transaction-list-item.component';
 import { PaginatorComponent } from './shared/ui/paginator/paginator.component';
+import { CssSpinnerComponent } from './shared/ui/css-spinner/css-spinner.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PaginatorComponent } from './shared/ui/paginator/paginator.component';
     TransactionsToolbarComponent,
     TransactionListItemComponent,
     PaginatorComponent,
+    CssSpinnerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
   providers: [provideAnimationsAsync(), Title],

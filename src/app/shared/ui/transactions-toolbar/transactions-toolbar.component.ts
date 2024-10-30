@@ -1,4 +1,18 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
+import { Transaction } from '../../models/transaction-model';
+import { SearchService } from '../../services/search.service';
+import { debounceTime, fromEvent, map, switchMap, tap } from 'rxjs';
+import { TransactionsService } from '../../../pages/transactions/transactions.service';
 
 @Component({
   selector: 'app-transactions-toolbar',
@@ -7,6 +21,34 @@ import { AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation } fr
   encapsulation: ViewEncapsulation.None,
 })
 export class TransactionsToolbarComponent implements AfterViewInit {
+  private searchService = inject(SearchService);
+  private transactionsService = inject(TransactionsService);
+  @ViewChild('searchbox') searchInputRef!: ElementRef<HTMLInputElement>;
+
+  ngAfterViewInit(): void {
+    console.log(
+      fromEvent(this.searchInputRef.nativeElement, 'keyup')
+        .pipe(
+          map((e: any) => e.target.value),
+          tap(() => this.transactionsService.loadingSearchResults.emit(true)),
+          debounceTime(500),
+          // search, discarding old events if new input come in
+          switchMap((query: string) => this.searchService.search(query)),
+        )
+        .subscribe({
+          next: (results: Transaction[]) => {
+            this.transactionsService.loadingSearchResults.emit(false);
+            this.transactionsService.SearchResults.emit(results);
+          },
+          error: (err) => {
+            console.error(err);
+            this.transactionsService.loadingSearchResults.emit(false);
+          },
+          complete: () => this.transactionsService.loadingSearchResults.emit(false),
+        }),
+    );
+  }
+
   isSortOpen = false;
   isCategoryOpen = false;
   dropdownStyle = { top: '0px', right: '0px' };
@@ -31,8 +73,6 @@ export class TransactionsToolbarComponent implements AfterViewInit {
 
   @ViewChild('sortIcon', { static: false }) sortIcon!: ElementRef;
   @ViewChild('categoryIcon', { static: false }) categoryIcon!: ElementRef;
-
-  ngAfterViewInit() {}
 
   toggleDropdown(type: 'sort' | 'category') {
     const targetIcon = type === 'sort' ? this.sortIcon : this.categoryIcon;

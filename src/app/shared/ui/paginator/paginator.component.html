@@ -1,7 +1,8 @@
 <mat-paginator
   [length]="totalTransactions"
   [pageSize]="pageSize"
-  [pageSizeOptions]="pageSizeOptions"
+  hidePageSize="true"
+  [pageIndex]="pageIndex"
   aria-label="Select page"
   (page)="onPageChange($event)"
 ></mat-paginator>

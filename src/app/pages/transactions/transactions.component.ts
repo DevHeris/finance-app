@@ -10,6 +10,9 @@ import { Transaction } from '../../shared/models/transaction-model';
 export class TransactionsComponent implements OnInit {
   title = 'Finance | Transactions';
   titleService = inject(Title);
+  loading: boolean = false;
+  results: Transaction[] = [];
+
   private transactionsService = inject(TransactionsService);
 
   displayedTransactions: Transaction[] = [];
@@ -20,5 +23,18 @@ export class TransactionsComponent implements OnInit {
         this.displayedTransactions = transactions;
       },
     });
+    this.transactionsService.SearchResults.subscribe({
+      next: (transactions: Transaction[]) => {
+        this.displayedTransactions = transactions;
+      },
+    });
+    this.transactionsService.loadingSearchResults.subscribe({
+      next: (status: boolean) => {
+        this.loading = status;
+        console.log(this.loading);
+      },
+    });
   }
+
+  updateResults(newResults: Transaction[]) {}
 }
