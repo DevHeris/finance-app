@@ -43,4 +43,8 @@
     .amount {
         font-size: .8em;
     }
+
+    .transaction-item {
+        gap: .8em
+    }
 }

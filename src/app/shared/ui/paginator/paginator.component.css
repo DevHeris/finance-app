@@ -1,0 +1,18 @@
+.mat-mdc-paginator {
+    background-color: var(--p-grey-900) !important;
+    border-radius: .5em;
+}
+
+@media screen and (max-width:600px) {
+    .mat-mdc-paginator-container {
+        flex-wrap: nowrap !important;
+    }
+
+    .mat-mdc-paginator-page-size {
+        align-items: center !important;
+    }
+
+    .mat-mdc-paginator-range-label {
+        margin: 0;
+    }
+}
