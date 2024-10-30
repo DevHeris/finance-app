@@ -14,7 +14,7 @@
       <p>Amount</p>
     </div>
     <ul>
-      @for (transaction of transactions; track transaction) {
+      @for (transaction of displayedTransactions; track transaction) {
         @if ($first) {
           <mat-divider></mat-divider>
         }
@@ -26,4 +26,5 @@
       }
     </ul>
   </div>
+  <app-paginator></app-paginator>
 </div>

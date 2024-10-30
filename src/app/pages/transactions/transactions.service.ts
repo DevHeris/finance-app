@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, output } from '@angular/core';
 import { Transaction } from '../../shared/models/transaction-model';
 
 @Injectable({
@@ -7,6 +7,8 @@ import { Transaction } from '../../shared/models/transaction-model';
 export class TransactionsService {
   transactions: Transaction[];
   recurringTransactions: Transaction[];
+  displayedTransactions: Transaction[] = [];
+  pageUpdate = new EventEmitter<Transaction[]>();
 
   getOverviewPageDisplayedTransactions(): Transaction[] {
     // DISPLAY THE FIRST 5 TRANSACTIONS
@@ -16,6 +18,11 @@ export class TransactionsService {
   getTransactions(): Transaction[] {
     // ALL TRANSACTIONS
     return this.transactions.slice();
+  }
+
+  getCurrentlyDisplayedTransactions(): Transaction[] {
+    // TRANSACTIONS PER PAGE IN THE tRANSACTION ROUTE
+    return this.displayedTransactions;
   }
 
   constructor() {

@@ -1,0 +1,7 @@
+<mat-paginator
+  [length]="totalTransactions"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  aria-label="Select page"
+  (page)="onPageChange($event)"
+></mat-paginator>

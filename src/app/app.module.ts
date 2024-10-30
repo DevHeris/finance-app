@@ -19,6 +19,7 @@ import { NavListComponent } from './shared/ui/nav-list/nav-list.component';
 import { OverviewTransactionListItemComponent } from './pages/overview/overview-transaction-list-item/overview-transaction-list-item.component';
 import { TransactionsToolbarComponent } from './shared/ui/transactions-toolbar/transactions-toolbar.component';
 import { TransactionListItemComponent } from './shared/ui/transaction-list-item/transaction-list-item.component';
+import { PaginatorComponent } from './shared/ui/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TransactionListItemComponent } from './shared/ui/transaction-list-item/
     OverviewTransactionListItemComponent,
     TransactionsToolbarComponent,
     TransactionListItemComponent,
+    PaginatorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
   providers: [provideAnimationsAsync(), Title],
