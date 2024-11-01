@@ -20,8 +20,10 @@ export class PaginatorComponent implements OnInit {
     this.pageSize = 10;
     this.transactionsService.getTransactions().subscribe({
       next: (transactions) => {
+        console.log(transactions);
         this.transactions = transactions;
         this.totalTransactions = transactions.length;
+        this.updateDisplayedTransactions();
       },
     });
     this.transactionsService.getPageInfo().subscribe({

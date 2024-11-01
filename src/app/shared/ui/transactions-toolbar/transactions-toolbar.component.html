@@ -14,7 +14,10 @@
       <span>Sort by</span>
       <div>
         <mat-form-field>
-          <mat-select [(value)]="sortOptionSelected">
+          <mat-select
+            [(value)]="sortOptionSelected"
+            (selectionChange)="handleSelection($event.value)"
+          >
             @for (option of sortByOptions; track option) {
               <mat-option [value]="option">{{ option }}</mat-option>
             }
@@ -26,7 +29,10 @@
       <span>Category</span>
       <div>
         <mat-form-field>
-          <mat-select [(value)]="categorySelected">
+          <mat-select
+            [(value)]="categorySelected"
+            (selectionChange)="handleSelection($event.value)"
+          >
             @for (category of categoryOptions; track category) {
               <mat-option [value]="category">{{ category }}</mat-option>
             }

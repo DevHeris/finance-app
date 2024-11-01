@@ -19,9 +19,10 @@ import { FilterService } from '../../services/filter.service';
   styleUrl: './transactions-toolbar.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class TransactionsToolbarComponent implements AfterViewInit {
+export class TransactionsToolbarComponent implements AfterViewInit, OnInit {
   private transactionsService = inject(TransactionsService);
   private searchService = inject(SearchService);
+  private filterService = inject(FilterService);
 
   @ViewChild('searchbox') searchInputRef!: ElementRef<HTMLInputElement>;
   @ViewChild('sortIcon', { static: false }) sortIcon!: ElementRef;
@@ -46,6 +47,20 @@ export class TransactionsToolbarComponent implements AfterViewInit {
     'Bills',
     'Shopping',
   ];
+
+  ngOnInit(): void {
+    this.filterService.getSelectedCategory().subscribe({
+      next: (category: string) => {
+        this.categorySelected = category;
+      },
+    });
+
+    this.filterService.getSelectedSort().subscribe({
+      next: (sort: string) => {
+        this.sortOptionSelected = sort;
+      },
+    });
+  }
 
   ngAfterViewInit(): void {
     fromEvent(this.searchInputRef.nativeElement, 'keyup')
@@ -94,8 +109,13 @@ export class TransactionsToolbarComponent implements AfterViewInit {
 
   handleSelection(option: string) {
     if (this.isSortOpen) {
+      this.filterService.setSort(option);
+      this.filterService.filterTransactions('sort');
     } else {
+      this.filterService.setCategory(option);
+      this.filterService.filterTransactions('category');
     }
+
     this.isSortOpen = false;
     this.isCategoryOpen = false;
   }
