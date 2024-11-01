@@ -2,10 +2,8 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
   inject,
   OnInit,
-  Output,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -13,6 +11,7 @@ import { Transaction } from '../../models/transaction-model';
 import { SearchService } from '../../services/search.service';
 import { debounceTime, fromEvent, map, switchMap, tap } from 'rxjs';
 import { TransactionsService } from '../../../pages/transactions/transactions.service';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'app-transactions-toolbar',
@@ -21,43 +20,20 @@ import { TransactionsService } from '../../../pages/transactions/transactions.se
   encapsulation: ViewEncapsulation.None,
 })
 export class TransactionsToolbarComponent implements AfterViewInit {
-  private searchService = inject(SearchService);
   private transactionsService = inject(TransactionsService);
+  private searchService = inject(SearchService);
+
   @ViewChild('searchbox') searchInputRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('sortIcon', { static: false }) sortIcon!: ElementRef;
+  @ViewChild('categoryIcon', { static: false }) categoryIcon!: ElementRef;
 
-  ngAfterViewInit(): void {
-    console.log(
-      fromEvent(this.searchInputRef.nativeElement, 'keyup')
-        .pipe(
-          map((e: any) => e.target.value),
-          tap(() => this.transactionsService.loadingSearchResults.emit(true)),
-          debounceTime(500),
-          // search, discarding old events if new input come in
-          switchMap((query: string) => this.searchService.search(query)),
-        )
-        .subscribe({
-          next: (results: Transaction[]) => {
-            this.transactionsService.loadingSearchResults.emit(false);
-            this.transactionsService.SearchResults.emit(results);
-          },
-          error: (err) => {
-            console.error(err);
-            this.transactionsService.loadingSearchResults.emit(false);
-          },
-          complete: () => this.transactionsService.loadingSearchResults.emit(false),
-        }),
-    );
-  }
-
-  isSortOpen = false;
-  isCategoryOpen = false;
+  isSortOpen: boolean = false;
+  isCategoryOpen: boolean = false;
   dropdownStyle = { top: '0px', right: '0px' };
-
-  sortOptionSelected = 'Latest';
-  categorySelected = 'All Transactions';
-
-  sortByOptions = ['Latest', 'Oldest', 'A to Z', 'Z to A', 'Highest', 'Lowest'];
-  categoryOptions = [
+  sortOptionSelected: string = '';
+  categorySelected: string = '';
+  sortByOptions: Array<string> = ['Latest', 'Oldest', 'A to Z', 'Z to A', 'Highest', 'Lowest'];
+  categoryOptions: Array<string> = [
     'All Transactions',
     'Dining Out',
     'General',
@@ -71,8 +47,31 @@ export class TransactionsToolbarComponent implements AfterViewInit {
     'Shopping',
   ];
 
-  @ViewChild('sortIcon', { static: false }) sortIcon!: ElementRef;
-  @ViewChild('categoryIcon', { static: false }) categoryIcon!: ElementRef;
+  ngAfterViewInit(): void {
+    fromEvent(this.searchInputRef.nativeElement, 'keyup')
+      .pipe(
+        map((e: any) => e.target.value),
+        tap(() => this.transactionsService.updateLoadingState(true)),
+        debounceTime(500),
+        // search, discarding old events if new input come in
+        switchMap((query: string) => this.searchService.searchTransactions(query)),
+      )
+      .subscribe({
+        next: (results: Transaction[]) => {
+          this.transactionsService.updateLoadingState(false);
+          this.transactionsService.updateDisplayedTransactions(results);
+          this.transactionsService.updatePageInfo({
+            pageSize: results.length <= 10 ? results.length : 10,
+            pageLength: results.length,
+          });
+        },
+        error: (err) => {
+          console.error(err);
+          this.transactionsService.updateLoadingState(false);
+        },
+        complete: () => this.transactionsService.updateLoadingState(false),
+      });
+  }
 
   toggleDropdown(type: 'sort' | 'category') {
     const targetIcon = type === 'sort' ? this.sortIcon : this.categoryIcon;
@@ -95,9 +94,7 @@ export class TransactionsToolbarComponent implements AfterViewInit {
 
   handleSelection(option: string) {
     if (this.isSortOpen) {
-      this.sortOptionSelected = option;
     } else {
-      this.categorySelected = option;
     }
     this.isSortOpen = false;
     this.isCategoryOpen = false;

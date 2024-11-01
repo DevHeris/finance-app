@@ -35,6 +35,10 @@ mat-divider {
     /* margin: 0 .4em; */
 }
 
+h3 {
+    text-align: center;
+}
+
 
 
 @media screen and (max-width:1024px) {

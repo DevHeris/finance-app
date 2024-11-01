@@ -14,23 +14,29 @@
       <p>Amount</p>
     </div>
     <ul>
-      @if (!loading) {
-        @if (empty) {
-          <h2>No Transaction found</h2>
-        } @else {
-          @for (transaction of displayedTransactions; track transaction) {
-            @if ($first) {
-              <mat-divider></mat-divider>
-            }
-            <app-transaction-list-item [transaction]="transaction"></app-transaction-list-item>
+      @if (!displayedTransactions.length) {
+        <h3>No Transaction found</h3>
+      }
+      @if (loadingTransactions) {
+        <app-css-spinner></app-css-spinner>
+      } @else {
+        @for (
+          transaction of displayedTransactions;
+          track transaction.name +
+            transaction.amount +
+            transaction.date +
+            transaction.recurring +
+            transaction.category
+        ) {
+          @if ($first) {
+            <mat-divider></mat-divider>
+          }
+          <app-transaction-list-item [transaction]="transaction"></app-transaction-list-item>
 
-            @if (!$last) {
-              <mat-divider></mat-divider>
-            }
+          @if (!$last) {
+            <mat-divider></mat-divider>
           }
         }
-      } @else {
-        <app-css-spinner></app-css-spinner>
       }
     </ul>
   </div>

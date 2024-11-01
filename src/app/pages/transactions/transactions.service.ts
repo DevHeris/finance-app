@@ -1,30 +1,54 @@
-import { EventEmitter, Injectable, output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Transaction } from '../../shared/models/transaction-model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionsService {
-  transactions: Transaction[];
-  recurringTransactions: Transaction[];
-  displayedTransactions: Transaction[] = [];
+  private transactions$ = new BehaviorSubject<Transaction[]>(initialTransactions);
 
-  pageUpdate = new EventEmitter<Transaction[]>();
-  loadingSearchResults: EventEmitter<boolean> = new EventEmitter<boolean>();
-  SearchResults: EventEmitter<Transaction[]> = new EventEmitter<Transaction[]>();
+  private displayedTransactions$ = new BehaviorSubject<Transaction[]>(
+    initialTransactions.slice(0, 10),
+  );
 
-  constructor() {
-    this.transactions = initialTransactions;
-    this.recurringTransactions = initialRecurringTransactions;
+  private loadingTransactions$ = new BehaviorSubject<boolean>(false);
+
+  private pageInfoUpdate$ = new BehaviorSubject<{ pageSize: number; pageLength: number }>({
+    pageSize: 10,
+    pageLength: this.transactions$.getValue().length,
+  });
+
+  getTransactions(): Observable<Transaction[]> {
+    return this.transactions$.asObservable();
   }
 
-  getOverviewPageDisplayedTransactions(): Transaction[] {
-    // DISPLAY THE FIRST 5 TRANSACTIONS
-    return this.transactions.filter((_, index) => index < 5);
+  getDisplayedTransactions(): Observable<Transaction[]> {
+    return this.displayedTransactions$.asObservable();
   }
 
-  getTransactions(type?: 'all' | 'displayed'): Transaction[] {
-    return type === 'displayed' ? this.displayedTransactions.slice() : this.transactions.slice();
+  getFirstFiveTransactions(): Transaction[] {
+    return this.transactions$.getValue().slice(0, 5);
+  }
+
+  getLoadingState(): Observable<boolean> {
+    return this.loadingTransactions$.asObservable();
+  }
+
+  getPageInfo(): Observable<{ pageSize: number; pageLength: number }> {
+    return this.pageInfoUpdate$.asObservable();
+  }
+
+  updatePageInfo(info: { pageSize: number; pageLength: number }) {
+    this.pageInfoUpdate$.next(info);
+  }
+
+  updateDisplayedTransactions(transactions: Transaction[]) {
+    this.displayedTransactions$.next(transactions);
+  }
+
+  updateLoadingState(state: boolean) {
+    this.loadingTransactions$.next(state);
   }
 }
 

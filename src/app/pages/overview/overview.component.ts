@@ -18,6 +18,6 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle(this.title);
 
-    this.displayedTransactions = this.transactionsService.getOverviewPageDisplayedTransactions();
+    this.displayedTransactions = this.transactionsService.getFirstFiveTransactions();
   }
 }

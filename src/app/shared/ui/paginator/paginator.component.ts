@@ -1,12 +1,4 @@
-import {
-  Component,
-  inject,
-  Input,
-  numberAttribute,
-  OnInit,
-  output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { TransactionsService } from '../../../pages/transactions/transactions.service';
 import { Transaction } from '../../models/transaction-model';
 import { PageEvent } from '@angular/material/paginator';
@@ -19,42 +11,36 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class PaginatorComponent implements OnInit {
   private transactionsService = inject(TransactionsService);
-  transactions: Transaction[] = [];
   totalTransactions: number = 0;
-
-  @Input({ transform: numberAttribute }) pageIndex!: number;
-  @Input({ transform: numberAttribute }) pageSize!: number;
-
-  currentPageTransactions: Transaction[] = [];
+  transactions: Transaction[] = [];
+  pageIndex: number = 0;
+  pageSize: number = 0;
 
   ngOnInit(): void {
     this.pageSize = 10;
-    this.pageIndex = 0;
-
-    this.transactionsService.SearchResults.subscribe({
-      next: (results: Transaction[]) => {
-        this.updatePageDetails(results);
-        this.updateItems();
+    this.transactionsService.getTransactions().subscribe({
+      next: (transactions) => {
+        this.transactions = transactions;
+        this.totalTransactions = transactions.length;
       },
     });
-    this.updatePageDetails(this.transactionsService.getTransactions('all'));
-    this.updateItems();
+    this.transactionsService.getPageInfo().subscribe({
+      next: (info) => {
+        this.pageSize = info.pageSize;
+        this.totalTransactions = info.pageLength;
+      },
+    });
   }
 
-  updatePageDetails(transactions: Array<Transaction>) {
-    this.transactions = transactions;
-    this.totalTransactions = this.transactions.length;
-    this.pageIndex = 0;
-  }
-
-  updateItems() {
+  updateDisplayedTransactions(): void {
     const startIndex = this.pageIndex * this.pageSize;
-    this.currentPageTransactions = this.transactions.slice(startIndex, startIndex + this.pageSize);
-    this.transactionsService.pageUpdate.emit(this.currentPageTransactions);
+    const endIndex = startIndex + this.pageSize;
+    const displayedTransactions = this.transactions.slice(startIndex, endIndex);
+    this.transactionsService.updateDisplayedTransactions(displayedTransactions);
   }
 
-  onPageChange(event: PageEvent) {
+  onPageChange(event: PageEvent): void {
     this.pageIndex = event.pageIndex;
-    this.updateItems();
+    this.updateDisplayedTransactions();
   }
 }

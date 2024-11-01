@@ -1,6 +1,7 @@
 .transaction-item {
     padding: .5em;
     gap: 1em;
+    cursor: pointer;
 }
 
 .transaction-item>div {
