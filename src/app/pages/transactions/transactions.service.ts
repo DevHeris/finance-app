@@ -8,47 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class TransactionsService {
   private transactions$ = new BehaviorSubject<Transaction[]>(initialTransactions);
 
-  private displayedTransactions$ = new BehaviorSubject<Transaction[]>(
-    initialTransactions.slice(0, 10),
-  );
-
-  private loadingTransactions$ = new BehaviorSubject<boolean>(false);
-
-  private pageInfoUpdate$ = new BehaviorSubject<{ pageSize: number; pageLength: number }>({
-    pageSize: 10,
-    pageLength: this.transactions$.getValue().length,
-  });
-
-  getTransactions(): Observable<Transaction[]> {
-    return this.transactions$.asObservable();
-  }
-
-  getDisplayedTransactions(): Observable<Transaction[]> {
-    return this.displayedTransactions$.asObservable();
-  }
-
   getFirstFiveTransactions(): Transaction[] {
-    return this.transactions$.getValue().slice(0, 5);
-  }
-
-  getLoadingState(): Observable<boolean> {
-    return this.loadingTransactions$.asObservable();
-  }
-
-  getPageInfo(): Observable<{ pageSize: number; pageLength: number }> {
-    return this.pageInfoUpdate$.asObservable();
-  }
-
-  updatePageInfo(info: { pageSize: number; pageLength: number }) {
-    this.pageInfoUpdate$.next(info);
-  }
-
-  updateDisplayedTransactions(transactions: Transaction[]) {
-    this.displayedTransactions$.next(transactions);
-  }
-
-  updateLoadingState(state: boolean) {
-    this.loadingTransactions$.next(state);
+    return this.transactions$.value.slice(0, 5);
   }
 }
 
@@ -446,7 +407,3 @@ const initialTransactions = [
     recurring: false,
   },
 ];
-
-const initialRecurringTransactions = initialTransactions.filter(
-  (trans) => trans.recurring === true,
-);

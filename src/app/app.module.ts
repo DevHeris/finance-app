@@ -17,10 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NavListComponent } from './shared/ui/nav-list/nav-list.component';
 import { OverviewTransactionListItemComponent } from './pages/overview/overview-transaction-list-item/overview-transaction-list-item.component';
-import { TransactionsToolbarComponent } from './shared/ui/transactions-toolbar/transactions-toolbar.component';
-import { TransactionListItemComponent } from './shared/ui/transaction-list-item/transaction-list-item.component';
-import { PaginatorComponent } from './shared/ui/paginator/paginator.component';
 import { CssSpinnerComponent } from './shared/ui/css-spinner/css-spinner.component';
+import { PotItemComponent } from './shared/ui/pot-item/pot-item.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +34,8 @@ import { CssSpinnerComponent } from './shared/ui/css-spinner/css-spinner.compone
     SignupComponent,
     NavListComponent,
     OverviewTransactionListItemComponent,
-    TransactionsToolbarComponent,
-    TransactionListItemComponent,
-    PaginatorComponent,
     CssSpinnerComponent,
+    PotItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
   providers: [provideAnimationsAsync(), Title],

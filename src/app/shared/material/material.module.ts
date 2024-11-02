@@ -12,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBar } from '@angular/material/progress-bar';
 
 const MaterialModules = [
   MatGridListModule,
@@ -27,6 +28,7 @@ const MaterialModules = [
   MatCardModule,
   MatSelectModule,
   MatPaginatorModule,
+  MatProgressBar,
 ];
 
 @NgModule({

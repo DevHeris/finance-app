@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Pot } from '../../shared/models/pot-model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PotsService {
-  pots: Pot[];
+  private pots$ = new BehaviorSubject<Pot[]>(initialPots);
 
-  constructor() {
-    this.pots = initialPots;
+  getPots(): Pot[] {
+    return this.pots$.getValue();
   }
 }
 

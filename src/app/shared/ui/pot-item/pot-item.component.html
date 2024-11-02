@@ -1,0 +1,35 @@
+<section>
+  <div class="header flex">
+    <div class="flex items-center" [ngStyle]="{ gap: '.8em' }">
+      <p class="ball" [ngStyle]="{ backgroundColor: pot.theme }"></p>
+      <h3>{{ pot.name }}</h3>
+    </div>
+    <div class="ellipsis cursor-pointer">
+      <img src="/assets/images/icon-ellipsis.svg" alt="ellipsis" />
+    </div>
+  </div>
+  <div class="main">
+    <p class="up flex items-center justify-between">
+      <span>Total Saved</span>
+      <span class="bold">{{ pot.total | currency }}</span>
+    </p>
+    <div class="progress">
+      <div class="progress-bar-container" [style.--border-color]="pot.theme">
+        <div class="progress-bar-fill" [style.width.%]="progressValue"></div>
+      </div>
+    </div>
+    <p class="flex items-center justify-between">
+      <span class="bold total">{{ progressValue.toFixed(2) }}%</span>
+      <span class="target">Target of ${{ pot.target }}</span>
+    </p>
+    <div class="cta flex items-center justify-between">
+      <button class="cursor-pointer flex bold">
+        <mat-icon>add</mat-icon>
+        <span>Add Money</span>
+      </button>
+      <button class="cursor-pointer bold">
+        <span>Withdraw</span>
+      </button>
+    </div>
+  </div>
+</section>

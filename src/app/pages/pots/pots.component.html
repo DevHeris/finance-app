@@ -1,1 +1,16 @@
-<p>pots works!</p>
+<div class="wrapper">
+  <section class="title-bar flex items-center">
+    <h2 class="title-text bold">Pots</h2>
+    <button class="cursor-pointer">
+      <div class="flex">
+        <mat-icon>add</mat-icon>
+        <span>Add New Pot</span>
+      </div>
+    </button>
+  </section>
+  <ul class="pots flex items-center justify-between">
+    @for (pot of pots; track pot) {
+      <li class="pot"><app-pot-item [pot]="pot"></app-pot-item></li>
+    }
+  </ul>
+</div>
