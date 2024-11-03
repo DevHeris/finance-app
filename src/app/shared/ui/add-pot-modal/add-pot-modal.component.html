@@ -1,0 +1,80 @@
+<div class="backdrop" (click)="closeModal()"></div>
+<div class="modal-container">
+  <header class="flex items-center justify-between">
+    <h2>Add New Pot</h2>
+    <img
+      src="/assets/images/icon-close-modal.svg"
+      alt="close-modal"
+      class="cursor-pointer"
+      (click)="closeModal()"
+    />
+  </header>
+  <p class="form-paragraph">
+    Create a pot to set savings targets. These can help keep you on track as you save for special
+    purchases.
+  </p>
+
+  <form [formGroup]="potForm">
+    <div class="field">
+      <label for="name">Pot Name</label>
+      <br />
+      <input
+        type="text"
+        id="name"
+        placeholder="e.g. Rainy Days"
+        name="name"
+        formControlName="name"
+        required
+      />
+      @if (name.invalid && (name.dirty || name.touched)) {
+        <div class="error">
+          @if (name.hasError("required")) {
+            <p>Must enter a name.</p>
+          }
+        </div>
+      }
+    </div>
+    <div class="field">
+      <label for="target">Target</label>
+      <br />
+      <input
+        type="text"
+        id="target"
+        placeholder="e.g. 2000"
+        name="target"
+        formControlName="target"
+        required
+      />
+      @if (target.invalid && (target.dirty || target.touched)) {
+        <div class="error">
+          @if (target.hasError("required")) {
+            <p>Must enter a target.</p>
+          }
+          @if (target.hasError("pattern")) {
+            <p>Must be a number.</p>
+          }
+        </div>
+      }
+    </div>
+    <div class="field">
+      <label for="theme">Theme</label>
+      <mat-select name="theme" formControlName="theme">
+        <!-- Display selected option with color ball -->
+        <mat-select-trigger>
+          <div class="flex items-center" [ngStyle]="{ gap: '.8em' }">
+            <p class="ball" [ngStyle]="{ backgroundColor: theme.value }"></p>
+            <h3>{{ theme.value }}</h3>
+          </div>
+        </mat-select-trigger>
+
+        <mat-option *ngFor="let theme of themes" [value]="theme">
+          <div class="flex items-center" [ngStyle]="{ gap: '.8em' }">
+            <p class="ball" [ngStyle]="{ backgroundColor: theme }"></p>
+            <h3>{{ theme }}</h3>
+          </div>
+        </mat-option>
+      </mat-select>
+    </div>
+    <button type="submit">Add Pot</button>
+  </form>
+</div>

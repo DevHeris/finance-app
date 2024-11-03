@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { NavListComponent } from '../nav-list/nav-list.component';
 
 @Component({
@@ -16,6 +16,7 @@ export class LayoutComponent implements OnDestroy, OnInit {
   private media = inject(MediaMatcher);
   private cdr = inject(ChangeDetectorRef);
   private bottomSheet = inject(MatBottomSheet);
+  private bottomSheetRef!: MatBottomSheetRef<NavListComponent>;
 
   mobileQuery: MediaQueryList;
   tabletQuery: MediaQueryList;
@@ -42,7 +43,7 @@ export class LayoutComponent implements OnDestroy, OnInit {
   }
 
   openBottomSheet(): void {
-    this.bottomSheet.open(NavListComponent, {
+    this.bottomSheetRef = this.bottomSheet.open(NavListComponent, {
       panelClass: 'custom-bottom-sheet',
     });
   }
@@ -55,5 +56,9 @@ export class LayoutComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
     this.tabletQuery.removeEventListener('change', this.tabletQueryListener);
+
+    if (this.bottomSheetRef) {
+      this.bottomSheetRef.dismiss();
+    }
   }
 }

@@ -75,7 +75,9 @@ mat-stepper {
     color: var(--cyan);
     font-weight: bold;
     padding-bottom: 1em;
+
 }
+
 
 .signup-container {
     text-align: center;
@@ -94,6 +96,8 @@ mat-stepper {
 .signup-link:hover {
     text-decoration: underline;
 }
+
+
 
 /* Angular Material Overrides */
 ::ng-deep .mat-mdc-form-field-error-wrapper {

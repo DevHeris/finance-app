@@ -112,35 +112,6 @@
     font-size: 2em;
 }
 
-.mini-pot {
-    display: flex;
-    flex-direction: column;
-    gap: .5em;
-    padding-left: 1.1em;
-    border-radius: .1em 0 0 .1em;
-}
-
-.mini-pot:first-child {
-    border-left: 4px solid var(--s-green);
-}
-
-.mini-pot:nth-child(2) {
-    border-left: 4px solid var(--s-cyan);
-}
-
-.mini-pot:nth-child(3) {
-    border-left: 4px solid var(--o-turquoise);
-}
-
-.mini-pot:last-child {
-    border-left: 4px solid var(--s-yellow);
-}
-
-.mini-pot span:first-child {
-    font-size: .8em;
-    color: var(--p-grey-500);
-}
-
 mat-divider {
     border-top-color: var(--p-grey-100);
     margin: 0 .7em;

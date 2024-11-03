@@ -6,7 +6,7 @@
         alt="Overview Icon"
       />
 
-      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Overview</span>
+      <span class="nav-text {{ isSidenavOpen && 'show' }}">Overview</span>
     </div>
   </a>
   <a mat-list-item routerLink="/transactions" routerLinkActive="active">
@@ -18,7 +18,7 @@
         alt="Transactions Icon"
       />
 
-      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Transactions</span>
+      <span class="nav-text {{ isSidenavOpen && 'show' }}">Transactions</span>
     </div>
   </a>
   <a mat-list-item routerLink="/budgets" routerLinkActive="active">
@@ -28,7 +28,7 @@
         alt="Budgets Icon"
       />
 
-      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Budgets</span>
+      <span class="nav-text {{ isSidenavOpen && 'show' }}">Budgets</span>
     </div>
   </a>
   <a mat-list-item routerLink="/pots" routerLinkActive="active">
@@ -38,7 +38,7 @@
         alt="Pots Icon"
       />
 
-      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Pots</span>
+      <span class="nav-text {{ isSidenavOpen && 'show' }}">Pots</span>
     </div>
   </a>
   <a mat-list-item routerLink="/recurring-bills" routerLinkActive="active">
@@ -50,7 +50,14 @@
         alt="Recurring Bills Icon"
       />
 
-      <span class="nav-text {{ isSidenavOpen() && 'show' }}">Recurring Bills</span>
+      <span class="nav-text {{ isSidenavOpen && 'show' }}">Recurring Bills</span>
+    </div>
+  </a>
+
+  <a mat-list-item (click)="logout()">
+    <div class="mat-list-item-div">
+      <mat-icon>logout</mat-icon>
+      <span class="nav-text {{ isSidenavOpen && 'show' }}">Log Out</span>
     </div>
   </a>
 </mat-nav-list>

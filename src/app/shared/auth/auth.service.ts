@@ -29,7 +29,7 @@ export class AuthService {
       this.materialService.openSnackBar('Signup successful! Welcome!', 'Cancel', {
         horizontalPosition: 'end',
         verticalPosition: 'top',
-        duration: 10000,
+        duration: 5000,
       });
 
       this._isSigningUp.next(false);
@@ -47,7 +47,7 @@ export class AuthService {
         this.materialService.openSnackBar('Login successful! Welcome!', 'Cancel', {
           horizontalPosition: 'end',
           verticalPosition: 'top',
-          duration: 10000,
+          duration: 5000,
         });
       } else {
         this.materialService.openSnackBar('Invalid login credentials!', 'Cancel', {
@@ -62,7 +62,12 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('user-data');
+    this.materialService.openSnackBar('You have logged out.', 'Cancel', {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      duration: 5000,
+    });
+
     this.router.navigate(['/login']);
   }
 

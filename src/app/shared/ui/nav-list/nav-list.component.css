@@ -79,7 +79,7 @@ span {
     }
 
     mat-nav-list {
-        grid-gap: .5em;
+        grid-gap: 0;
     }
 
 }

@@ -1,4 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, Input, input, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-nav-list',
@@ -6,9 +8,13 @@ import { Component, input } from '@angular/core';
   styleUrl: './nav-list.component.css',
 })
 export class NavListComponent {
-  isSidenavOpen = input<boolean>();
-
+  @Input() isSidenavOpen!: boolean;
+  private authService = inject(AuthService);
   isActiveRoute(route: string): boolean {
     return window.location.pathname === route;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

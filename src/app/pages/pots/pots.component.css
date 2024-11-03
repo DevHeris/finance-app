@@ -6,7 +6,7 @@
     background-color: var(--p-grey-900);
     padding-bottom: .7em;
     padding-right: .9em;
-    padding-top: .9em;
+    padding-top: 1em;
     padding-left: .5em;
     color: var(--o-white);
     outline: none;
@@ -22,7 +22,7 @@
 }
 
 .title-bar button:hover {
-    background-color: rgba(46, 42, 42, 0.849);
+    background-color: rgba(31, 27, 27, 0.884);
     transition: background 200ms ease-in;
 }
 

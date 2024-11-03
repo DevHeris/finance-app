@@ -16,9 +16,12 @@ import { MaterialModule } from './shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NavListComponent } from './shared/ui/nav-list/nav-list.component';
-import { OverviewTransactionListItemComponent } from './pages/overview/overview-transaction-list-item/overview-transaction-list-item.component';
+import { OverviewTransactionListItemComponent } from './shared/ui/overview-transaction-list-item/overview-transaction-list-item.component';
 import { CssSpinnerComponent } from './shared/ui/css-spinner/css-spinner.component';
 import { PotItemComponent } from './shared/ui/pot-item/pot-item.component';
+import { OverviewPotListItemComponent } from './shared/ui/overview-pot-list-item/overview-pot-list-item.component';
+import { AddPotModalComponent } from './shared/ui/add-pot-modal/add-pot-modal.component';
+import { CurrencyInputDirective } from './shared/directives/currency-input.directive';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { PotItemComponent } from './shared/ui/pot-item/pot-item.component';
     OverviewTransactionListItemComponent,
     CssSpinnerComponent,
     PotItemComponent,
+    OverviewPotListItemComponent,
+    AddPotModalComponent,
+    CurrencyInputDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
   providers: [provideAnimationsAsync(), Title],

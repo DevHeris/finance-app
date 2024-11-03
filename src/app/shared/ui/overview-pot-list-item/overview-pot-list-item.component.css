@@ -1,0 +1,12 @@
+.mini-pot {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    padding-left: 1.1em;
+    border-radius: .1em 0 0 .1em;
+}
+
+.name {
+    font-size: .8em;
+    color: var(--p-grey-500);
+}

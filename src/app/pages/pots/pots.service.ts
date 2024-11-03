@@ -11,6 +11,10 @@ export class PotsService {
   getPots(): Pot[] {
     return this.pots$.getValue();
   }
+
+  getFirstFourPots(): Pot[] {
+    return this.getPots().slice(0, 4);
+  }
 }
 
 const initialPots = [
