@@ -7,37 +7,34 @@ export class CurrencyInputDirective {
   private readonly prefix = '$ ';
 
   constructor(private el: ElementRef) {
-    this.el.nativeElement.value = this.prefix; // Start with the dollar sign
+    this.setDisplayValue();
+  }
+
+  private setDisplayValue() {
+    const inputElement = this.el.nativeElement as HTMLInputElement;
+    const rawValue = this.getRawValue(inputElement.value);
+    inputElement.value = this.prefix + rawValue;
+  }
+
+  private getRawValue(value: string): string {
+    // Remove the prefix to get the raw numeric value
+    return value.replace(this.prefix, '');
   }
 
   @HostListener('focus') onFocus() {
-    this.moveCaretToEnd();
-  }
-
-  @HostListener('blur') onBlur() {
-    // If only the prefix is present, clear it to show a clean empty input
-    if (this.el.nativeElement.value === this.prefix) {
-      this.el.nativeElement.value = '';
-    }
+    this.setDisplayValue();
   }
 
   @HostListener('input', ['$event']) onInput(event: InputEvent) {
     const inputElement = this.el.nativeElement as HTMLInputElement;
 
-    // Remove any characters before the prefix and ensure prefix is always present
-    if (!inputElement.value.startsWith(this.prefix)) {
-      inputElement.value = this.prefix + inputElement.value.replace(/[^0-9.]/g, '');
-    } else {
-      // Allow only numeric input after the prefix
-      inputElement.value =
-        this.prefix + inputElement.value.substring(this.prefix.length).replace(/[^0-9.]/g, '');
-    }
-
-    this.moveCaretToEnd();
+    // Get the raw numeric input and reapply the prefix
+    const rawValue = this.getRawValue(inputElement.value);
+    inputElement.value = this.prefix + rawValue;
   }
 
-  private moveCaretToEnd() {
-    const inputElement = this.el.nativeElement as HTMLInputElement;
-    inputElement.setSelectionRange(this.prefix.length, this.prefix.length);
+  @HostListener('blur') onBlur() {
+    // Ensure the prefix is still shown when the input loses focus
+    this.setDisplayValue();
   }
 }

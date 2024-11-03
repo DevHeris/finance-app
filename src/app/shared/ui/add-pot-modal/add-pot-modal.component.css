@@ -76,8 +76,9 @@
 }
 
 .modal-container mat-select-trigger h3 {
+    font-size: .9em !important;
     font-weight: normal;
-    color: var(--p-grey-500)
+    color: var(--p-grey-500);
 }
 
 .modal-container .mat-mdc-select-arrow svg {
@@ -94,6 +95,7 @@ div.mat-mdc-select-panel {
 mat-option h3 {
     color: var(--p-grey-500) !important;
     font-weight: normal !important;
+    font-size: .9em !important;
 }
 
 mat-option {
@@ -106,10 +108,29 @@ mat-option {
 }
 
 .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple) {
-    background-color: var(--p-grey-900) !important;
+    background-color: transparent !important;
+
 }
 
-.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text h3 {
 
-    color: var(--o-white) !important
+.field.target {
+    position: relative;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dollar-sign {
+    position: absolute;
+    top: 33%;
+    left: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+#target {
+    padding-left: 2em;
 }

@@ -34,17 +34,20 @@
         </div>
       }
     </div>
-    <div class="field">
+    <div class="field target">
       <label for="target">Target</label>
       <br />
-      <input
-        type="text"
-        id="target"
-        placeholder="e.g. 2000"
-        name="target"
-        formControlName="target"
-        required
-      />
+      <div class="input-wrapper">
+        <span class="dollar-sign">$</span>
+        <input
+          type="text"
+          id="target"
+          placeholder="e.g. 2000"
+          name="target"
+          formControlName="target"
+          required
+        />
+      </div>
       @if (target.invalid && (target.dirty || target.touched)) {
         <div class="error">
           @if (target.hasError("required")) {
@@ -56,6 +59,7 @@
         </div>
       }
     </div>
+
     <div class="field">
       <label for="theme">Theme</label>
       <mat-select name="theme" formControlName="theme">
