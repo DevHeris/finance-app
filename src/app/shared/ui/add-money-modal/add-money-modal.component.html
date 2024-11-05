@@ -39,23 +39,35 @@
   </p>
 
   <div class="field amount-to-add">
-    <label for="amount">Amount to Add</label>
-    <br />
-    <div class="input-wrapper">
-      <span class="dollar-sign">$</span>
-      <input
-        type="text"
-        id="amount-to-add"
-        placeholder="e.g. 50"
-        name="amount"
-        required
-        (ngModel)="(amount)"
-        (ngModelChange)="onAmountInput($event)"
-      />
-    </div>
-    <!-- <p *ngIf="!isValidAmount" class="validation-message">
-      Please enter a valid amount between $1 and {{ pot.target - pot.total | currency }}
-    </p> -->
+    <form [formGroup]="addMoneyForm">
+      <label for="amount">Amount to Add</label>
+      <br />
+      <div class="input-wrapper">
+        <span class="dollar-sign">$</span>
+        <input
+          type="text"
+          id="amount-to-add"
+          placeholder="e.g. 50"
+          name="amount"
+          required
+          formControlName="amount"
+          (input)="onAmountInput($event)"
+        />
+      </div>
+      @if (amount.invalid && (amount.dirty || amount.touched)) {
+        <div class="error">
+          @if (amount.hasError("required")) {
+            <p>Must enter an amount.</p>
+          }
+          @if (amount.hasError("pattern")) {
+            <p>Must be a number.</p>
+          }
+          @if (amount.hasError("maxAmount")) {
+            Please enter a valid amount between $1 and {{ pot.target - pot.total | currency }}
+          }
+        </div>
+      }
+    </form>
   </div>
   <button type="submit">Confirm Addition</button>
 </div>

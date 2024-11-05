@@ -32,6 +32,7 @@ export class AddPotModalComponent {
   get target(): AbstractControl {
     return this.potForm.controls['target'];
   }
+
   get theme(): AbstractControl {
     return this.potForm.controls['theme'];
   }

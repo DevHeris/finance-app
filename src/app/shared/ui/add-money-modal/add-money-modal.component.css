@@ -120,3 +120,9 @@
     border-radius: .5em;
     cursor: pointer;
 }
+
+.add-money-modal-container .error {
+    text-align: right;
+    font-size: .8em;
+    color: var(--p-grey-300);
+}
