@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Pot } from '../../models/pot-model';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { maxAmountValidator } from '../../validators/max-amount';
+import { PotsService } from '../../../pages/pots/pots.service';
+import { MaterialService } from '../../material/material.service';
 
 @Component({
   selector: 'app-add-money-modal',
@@ -10,11 +12,13 @@ import { maxAmountValidator } from '../../validators/max-amount';
   styleUrl: './add-money-modal.component.css',
 })
 export class AddMoneyModalComponent {
-  public dialogRef = inject(MatDialogRef<AddMoneyModalComponent>);
+  private dialogRef = inject(MatDialogRef<AddMoneyModalComponent>);
   public pot: Pot = inject(MAT_DIALOG_DATA);
-  public currentProgress: number = 0;
-  public addedProgress: number = 0;
-
+  private potsService = inject(PotsService);
+  private materialService = inject(MaterialService);
+  currentProgress: number = 0;
+  addedProgress: number = 0;
+  totalAmount: number = 0;
   inputAmount: number = 0;
 
   addMoneyForm: FormGroup = new FormGroup({
@@ -29,8 +33,6 @@ export class AddMoneyModalComponent {
   get amount(): AbstractControl {
     return this.addMoneyForm.controls['amount'];
   }
-
-  totalAmount: number = 0;
 
   ngOnInit(): void {
     this.currentProgress = (this.pot.total / this.pot.target) * 100;
@@ -47,5 +49,15 @@ export class AddMoneyModalComponent {
 
     const newProgress = (this.inputAmount / this.pot.target) * 100;
     this.addedProgress = Math.min(newProgress, 100 - this.currentProgress);
+  }
+
+  onAddMoney(): void {
+    if (this.addMoneyForm.valid) {
+      this.potsService.updateSinglePot(this.pot.name, {
+        ...this.pot,
+        total: this.totalAmount,
+      });
+      this.closeModal();
+    }
   }
 }

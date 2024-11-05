@@ -38,8 +38,8 @@
     <span class="target">Target of ${{ pot.target }}</span>
   </p>
 
-  <div class="field amount-to-add">
-    <form [formGroup]="addMoneyForm">
+  <form [formGroup]="addMoneyForm" (ngSubmit)="onAddMoney()">
+    <div class="field amount-to-add">
       <label for="amount">Amount to Add</label>
       <br />
       <div class="input-wrapper">
@@ -63,11 +63,14 @@
             <p>Must be a number.</p>
           }
           @if (amount.hasError("maxAmount")) {
-            Please enter a valid amount between $1 and {{ pot.target - pot.total | currency }}
+            Please enter a valid amount between
+            <strong>$1</strong>
+            and
+            <strong>{{ pot.target - pot.total | currency }}</strong>
           }
         </div>
       }
-    </form>
-  </div>
-  <button type="submit">Confirm Addition</button>
+    </div>
+    <button type="submit">Confirm Addition</button>
+  </form>
 </div>

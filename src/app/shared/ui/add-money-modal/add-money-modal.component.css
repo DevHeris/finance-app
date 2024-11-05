@@ -126,3 +126,7 @@
     font-size: .8em;
     color: var(--p-grey-300);
 }
+
+strong {
+    color: var(--p-grey-900);
+}

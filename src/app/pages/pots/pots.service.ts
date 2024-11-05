@@ -20,6 +20,23 @@ export class PotsService {
     this.pots$.next(updatedPots);
   }
 
+  updateSinglePot(potName: string, updatedPot: Pot) {
+    const potToBeUpdated = this.getPots().find(
+      (pot) => pot.name.toLowerCase() === potName.toLowerCase(),
+    );
+    if (potToBeUpdated) {
+      // Used map to iterate through the pots array.
+      // then for the matching pot (based on name), spread the updatedPot object to create a new object with the updated values.
+      // For other pots, the original pot object is retained.
+      const updatedPots = this.getPots().map((pot) =>
+        pot.name.toLowerCase() === potName.toLowerCase() ? { ...updatedPot } : pot,
+      );
+      this.updatePots(updatedPots);
+    } else {
+      console.error(`Pot with name "${potName}" not found.`);
+    }
+  }
+
   getFirstFourPots(): Pot[] {
     return this.getPots().slice(0, 4);
   }
