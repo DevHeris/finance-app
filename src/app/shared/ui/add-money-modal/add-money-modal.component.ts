@@ -57,6 +57,11 @@ export class AddMoneyModalComponent {
         ...this.pot,
         total: this.totalAmount,
       });
+      this.materialService.openSnackBar('Money added successfully!', 'Dismiss', {
+        horizontalPosition: 'end',
+        verticalPosition: 'top',
+        duration: 5000,
+      });
       this.closeModal();
     }
   }

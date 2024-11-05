@@ -26,7 +26,7 @@ export class AuthService {
       localStorage.setItem('user-data', JSON.stringify(user));
 
       this.router.navigate(['/']);
-      this.materialService.openSnackBar('Signup successful! Welcome!', 'Cancel', {
+      this.materialService.openSnackBar('Signup successful! Welcome!', 'Dismiss', {
         horizontalPosition: 'end',
         verticalPosition: 'top',
         duration: 5000,
@@ -44,13 +44,13 @@ export class AuthService {
 
       if (storedUser.username === username && storedUser.password === password) {
         this.router.navigate(['/']);
-        this.materialService.openSnackBar('Login successful! Welcome!', 'Cancel', {
+        this.materialService.openSnackBar('Login successful! Welcome!', 'Dismiss', {
           horizontalPosition: 'end',
           verticalPosition: 'top',
           duration: 5000,
         });
       } else {
-        this.materialService.openSnackBar('Invalid login credentials!', 'Cancel', {
+        this.materialService.openSnackBar('Invalid login credentials!', 'Dismiss', {
           horizontalPosition: 'end',
           verticalPosition: 'top',
           duration: 5000,
@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.materialService.openSnackBar('You have logged out.', 'Cancel', {
+    this.materialService.openSnackBar('You have logged out.', 'Dismiss', {
       horizontalPosition: 'end',
       verticalPosition: 'top',
       duration: 5000,

@@ -51,7 +51,7 @@ export class AddPotModalComponent {
       };
       this.potsService.addPot(newPot);
       this.closeModal();
-      this.materialService.openSnackBar(this.name.value + ' pot added.', 'Cancel', {
+      this.materialService.openSnackBar(this.name.value + ' pot added.', 'Dismiss', {
         horizontalPosition: 'end',
         verticalPosition: 'top',
         duration: 5000,
