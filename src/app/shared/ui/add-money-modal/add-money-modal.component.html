@@ -14,4 +14,48 @@
     <strong>{{ pot.name.toLowerCase() }}</strong>
     pot to reach your goals faster. Every contribution brings you closer to your target.
   </p>
+
+  <p class="flex items-center justify-between new-amount-text">
+    <span>New Amount</span>
+    <span class="bold total">{{ totalAmount | currency }}</span>
+  </p>
+
+  <div class="progress">
+    <div class="progress-bar-container">
+      <!-- Current progress in black -->
+      <div class="progress-bar-fill current-progress" [style.width.%]="currentProgress"></div>
+      <!-- New added progress in theme color -->
+      <div
+        class="progress-bar-fill added-progress"
+        [style.width.%]="addedProgress"
+        [style.left.%]="currentProgress"
+        [style.background-color]="pot.theme"
+      ></div>
+    </div>
+  </div>
+  <p class="flex items-center justify-between">
+    <span class="bold total-two">{{ (+currentProgress + +addedProgress).toFixed(2) }}%</span>
+    <span class="target">Target of ${{ pot.target }}</span>
+  </p>
+
+  <div class="field amount-to-add">
+    <label for="amount">Amount to Add</label>
+    <br />
+    <div class="input-wrapper">
+      <span class="dollar-sign">$</span>
+      <input
+        type="text"
+        id="amount-to-add"
+        placeholder="e.g. 50"
+        name="amount"
+        required
+        (ngModel)="(amount)"
+        (ngModelChange)="onAmountInput($event)"
+      />
+    </div>
+    <!-- <p *ngIf="!isValidAmount" class="validation-message">
+      Please enter a valid amount between $1 and {{ pot.target - pot.total | currency }}
+    </p> -->
+  </div>
+  <button type="submit">Confirm Addition</button>
 </div>

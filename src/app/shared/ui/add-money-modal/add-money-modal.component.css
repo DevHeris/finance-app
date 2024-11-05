@@ -19,3 +19,104 @@
     font-size: .9em;
     color: var(--p-grey-500)
 }
+
+.new-amount-text span:first-child {
+    color: var(--p-grey-500);
+}
+
+.total {
+    font-size: 2em;
+    color: var(--p-grey-900);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 7px;
+    border-radius: 5px;
+    background-color: var(--p-beige-100);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    position: absolute;
+    transition: width 0.3s ease;
+}
+
+.current-progress {
+    background-color: black;
+}
+
+.added-progress {
+    background-color: var(--border-color);
+}
+
+
+.add-money-modal-container label {
+    font-size: .8em;
+    font-weight: bold;
+    color: var(--p-grey-500);
+}
+
+.add-money-modal-container input {
+    width: 100%;
+    margin: .5em 0 1em 0;
+    padding: 1em 1.5em;
+    border-radius: .5em;
+    outline: 1px solid rgba(0, 0, 0, 0.843);
+    border: none
+}
+
+.total-two,
+.target {
+    font-size: .8em;
+    color: var(--p-grey-500);
+}
+
+.field.amount-to-add {
+    position: relative;
+    padding-top: 2em;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input.invalid {
+    border-color: red;
+}
+
+.validation-message {
+    color: red;
+    font-size: 0.875rem;
+}
+
+
+.dollar-sign {
+    position: absolute;
+    top: 33%;
+    left: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+#amount-to-add {
+    padding-left: 2em;
+}
+
+.add-money-modal-container button {
+    background-color: var(--p-grey-900);
+    width: 100%;
+    margin-top: 1em;
+    outline: none;
+    border: none;
+    color: var(--o-white);
+    font-weight: bold;
+    text-align: center;
+    padding: 1.2em 0;
+    border-radius: .5em;
+    cursor: pointer;
+}
