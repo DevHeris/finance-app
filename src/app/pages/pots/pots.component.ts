@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PotsService } from './pots.service';
 import { Pot } from '../../shared/models/pot-model';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AddPotModalComponent } from '../../shared/ui/add-pot-modal/add-pot-modal.component';
 
 @Component({
@@ -21,7 +21,11 @@ export class PotsComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle(this.title);
-    this.pots = this.potsService.getPots();
+    this.potsService.getPotsObservable().subscribe({
+      next: (pots) => {
+        this.pots = pots;
+      },
+    });
   }
 
   openAddPotModal(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -29,12 +33,6 @@ export class PotsComponent implements OnInit {
       width: '800px',
       enterAnimationDuration,
       exitAnimationDuration,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        // Handle the newly created pot here
-      }
     });
   }
 }

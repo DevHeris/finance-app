@@ -63,6 +63,7 @@
     min-width: 120px;
     white-space: nowrap;
     margin-right: 1em;
+    justify-content: center;
 }
 
 .cta button mat-icon {

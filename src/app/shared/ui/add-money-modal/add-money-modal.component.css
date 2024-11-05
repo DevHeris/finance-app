@@ -1,0 +1,21 @@
+.add-money-modal-container {
+    padding: 2.5em 2em;
+    background-color: var(--o-white);
+    z-index: 1001;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.add-money-modal-container .form-paragraph {
+    margin: 1.5em 0;
+    font-size: .9em;
+    color: var(--p-grey-500)
+}

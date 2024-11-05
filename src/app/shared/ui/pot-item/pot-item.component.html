@@ -23,7 +23,7 @@
       <span class="target">Target of ${{ pot.target }}</span>
     </p>
     <div class="cta flex items-center justify-between">
-      <button class="cursor-pointer flex bold">
+      <button class="cursor-pointer flex bold" (click)="openAddMoneyModal('300ms', '150ms')">
         <mat-icon>add</mat-icon>
         <span>Add Money</span>
       </button>

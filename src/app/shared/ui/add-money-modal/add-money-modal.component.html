@@ -1,0 +1,17 @@
+<div class="backdrop" (click)="closeModal()"></div>
+<div class="add-money-modal-container">
+  <header class="flex items-center justify-between">
+    <h2>Add to '{{ pot.name }}'</h2>
+    <img
+      src="/assets/images/icon-close-modal.svg"
+      alt="close-modal"
+      class="cursor-pointer"
+      (click)="closeModal()"
+    />
+  </header>
+  <p class="form-paragraph">
+    Add funds to your
+    <strong>{{ pot.name.toLowerCase() }}</strong>
+    pot to reach your goals faster. Every contribution brings you closer to your target.
+  </p>
+</div>

@@ -12,8 +12,21 @@ export class PotsService {
     return this.pots$.getValue();
   }
 
+  getPotsObservable(): Observable<Pot[]> {
+    return this.pots$.asObservable();
+  }
+
+  updatePots(updatedPots: Pot[]): void {
+    this.pots$.next(updatedPots);
+  }
+
   getFirstFourPots(): Pot[] {
     return this.getPots().slice(0, 4);
+  }
+
+  addPot(newPot: Pot): void {
+    const updatedPots = [...this.pots$.getValue(), newPot];
+    this.updatePots(updatedPots);
   }
 }
 

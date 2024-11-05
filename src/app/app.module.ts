@@ -22,6 +22,7 @@ import { PotItemComponent } from './shared/ui/pot-item/pot-item.component';
 import { OverviewPotListItemComponent } from './shared/ui/overview-pot-list-item/overview-pot-list-item.component';
 import { AddPotModalComponent } from './shared/ui/add-pot-modal/add-pot-modal.component';
 import { CurrencyInputDirective } from './shared/directives/currency-input.directive';
+import { AddMoneyModalComponent } from './shared/ui/add-money-modal/add-money-modal.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CurrencyInputDirective } from './shared/directives/currency-input.direc
     OverviewPotListItemComponent,
     AddPotModalComponent,
     CurrencyInputDirective,
+    AddMoneyModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MaterialModule],
   providers: [provideAnimationsAsync(), Title],
